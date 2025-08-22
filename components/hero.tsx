@@ -1,35 +1,25 @@
 "use client";
-
 import Link from "next/link";
+
+
+
 
 export default function Hero() {
   return (
-    <section className="relative bg-gradient-to-r from-gray-900 via-black to-gray-900 text-white h-[90vh] flex items-center justify-center">
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/40" />
+    <section className="relative h-[80vh] flex flex-col justify-center items-center text-center bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 text-white">
+      <div className="absolute inset-0 bg-black/40"></div>
 
-      {/* Content */}
-      <div className="relative z-10 text-center max-w-3xl px-6">
-        <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-          Welcome to <span className="text-blue-500">E-Cell REC</span>
-        </h1>
-        <p className="mt-6 text-lg md:text-xl text-gray-300">
-          Igniting ideas, building leaders, and shaping the startup ecosystem.
+      <div className="relative z-10">
+        <h1 className="text-5xl font-bold mb-4">Welcome to EventHub</h1>
+        <p className="text-lg mb-6">
+          Discover, register, and celebrate every event in our college.
         </p>
-        <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            href="/events"
-            className="px-6 py-3 bg-blue-600 rounded-md text-lg font-semibold hover:bg-blue-700 transition"
-          >
-            Explore Events
-          </Link>
-          <Link
-            href="/clubs"
-            className="px-6 py-3 bg-gray-700 rounded-md text-lg font-semibold hover:bg-gray-600 transition"
-          >
-            Discover Clubs
-          </Link>
-        </div>
+        <a
+          href="/events"
+          className="px-6 py-3 bg-white text-purple-700 font-semibold rounded-lg shadow hover:bg-gray-200 transition"
+        >
+          Explore Events
+        </a>
       </div>
     </section>
   );
