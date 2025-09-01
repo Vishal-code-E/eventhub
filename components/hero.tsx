@@ -1,25 +1,29 @@
 "use client";
 import Link from "next/link";
 
-
-
-
 export default function Hero() {
   return (
-    <section className="relative h-[80vh] flex flex-col justify-center items-center text-center bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 text-white">
-      <div className="absolute inset-0 bg-black/40"></div>
+    <section className="text-white text-center px-6 py-16">
+      <h1 className="text-5xl md:text-6xl font-extrabold mb-6">
+        Welcome to <span className="text-gray-300">EventHub</span>
+      </h1>
+      <p className="text-lg md:text-xl mb-8 text-gray-400 max-w-2xl mx-auto">
+        Discover, register, and celebrate every event in our college.
+      </p>
 
-      <div className="relative z-10">
-        <h1 className="text-5xl font-bold mb-4">Welcome to EventHub</h1>
-        <p className="text-lg mb-6">
-          Discover, register, and celebrate every event in our college.
-        </p>
-        <a
+      <div className="flex gap-4 justify-center">
+        <Link
           href="/events"
-          className="px-6 py-3 bg-white text-purple-700 font-semibold rounded-lg shadow hover:bg-gray-200 transition"
+          className="px-6 py-3 bg-white text-black font-semibold rounded-lg hover:bg-gray-200 transition"
         >
           Explore Events
-        </a>
+        </Link>
+        <Link
+          href="/organize"
+          className="px-6 py-3 border border-white text-white font-semibold rounded-lg hover:bg-white hover:text-black transition"
+        >
+          Host an Event
+        </Link>
       </div>
     </section>
   );
