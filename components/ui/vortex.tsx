@@ -34,7 +34,7 @@ export const Vortex = ({
 }: VortexProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const animationFrameId = useRef<number>();
+  const animationFrameId = useRef<number | undefined>(undefined);
 
   const particlePropCount = 9;
   const particlePropsLength = particleCount * particlePropCount;
@@ -49,7 +49,7 @@ export const Vortex = ({
   let tick = 0;
   const noise3D = createNoise3D();
   let particleProps = new Float32Array(particlePropsLength);
-  let center: [number, number] = [0, 0];
+  const center: [number, number] = [0, 0];
 
   const TAU: number = 2 * Math.PI;
   const rand = (n: number) => n * Math.random();
@@ -124,8 +124,8 @@ export const Vortex = ({
 
     const i2 = 1 + i, i3 = 2 + i, i4 = 3 + i, i5 = 4 + i, i6 = 5 + i, i7 = 6 + i, i8 = 7 + i, i9 = 8 + i;
 
-    let x = particleProps[i];
-    let y = particleProps[i2];
+    const x = particleProps[i];
+    const y = particleProps[i2];
     const n = noise3D(x * xOff, y * yOff, tick * zOff) * noiseSteps * TAU;
     const vx = lerp(particleProps[i3], Math.cos(n), 0.5);
     const vy = lerp(particleProps[i4], Math.sin(n), 0.5);

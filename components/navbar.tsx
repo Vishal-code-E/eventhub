@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 
+
 //Navbar component
 
 
@@ -116,6 +117,7 @@ export default function Navbar() {
                         >
                             Get in Touch
                         </Link>
+                      
                     </nav>
                 </div>
             )}
