@@ -1,59 +1,75 @@
 "use client";
 
+import Link from "next/link";
+
 export default function AboutSection() {
   return (
-    <section className="bg-black text-white py-20 px-6">
+    <section className="bg-black text-white py-16 px-6">
       <div className="max-w-6xl mx-auto text-center">
-        {/* Heading */}
-        <h2 className="text-4xl font-extrabold mb-6">
+        {/* General About Event Hub */}
+        <h2 className="text-4xl font-bold mb-4">
           Your Campus, Your Events. All in One Place.
         </h2>
-        <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-16">
-          Raghu Engineering College is home to a vibrant culture of innovation,
-          learning, and celebration. From hackathons that fuel ideas, to cultural
-          fests that light up the stage, and workshops that sharpen skills —
-          <span className="font-semibold text-white"> Event Hub </span> brings
-          it all under one roof. Whether you’re a student eager to explore, an
-          organizer planning the next big thing, or someone who loves community
-          vibes — this is where it all comes together.
+        <p className="text-lg text-gray-300 mb-12">
+          Event Hub is where college events come alive. From hackathons to
+          cultural fests, workshops to meetups — we connect students, organizers,
+          and innovators through a single platform built for community.
         </p>
 
-        {/* Image placeholder grid */}
-        <div className="grid md:grid-cols-3 gap-6 mb-20">
-          <div className="h-48 bg-zinc-800 rounded-lg flex items-center justify-center text-gray-500">
-            Image Placeholder 1
-          </div>
-          <div className="h-48 bg-zinc-800 rounded-lg flex items-center justify-center text-gray-500">
-            Image Placeholder 2
-          </div>
-          <div className="h-48 bg-zinc-800 rounded-lg flex items-center justify-center text-gray-500">
-            Image Placeholder 3
-          </div>
-        </div>
-
-        {/* Feature cards */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
           <div className="p-6 bg-zinc-900 rounded-lg shadow hover:scale-105 transition">
             <h3 className="text-xl font-semibold mb-2">🎯 For Students</h3>
             <p className="text-gray-400">
               Discover events that match your interests, register instantly, and
-              never miss out on opportunities to grow, learn, and enjoy.
+              never miss out.
             </p>
           </div>
           <div className="p-6 bg-zinc-900 rounded-lg shadow hover:scale-105 transition">
             <h3 className="text-xl font-semibold mb-2">⚡ For Organizers</h3>
             <p className="text-gray-400">
-              Simplify event hosting with dashboards for RSVPs, promotions, and
-              engagement tools — making every event smooth and successful.
+              Simplify event hosting with easy dashboards, RSVPs, and engagement
+              tools.
             </p>
           </div>
           <div className="p-6 bg-zinc-900 rounded-lg shadow hover:scale-105 transition">
             <h3 className="text-xl font-semibold mb-2">🌍 For Community</h3>
             <p className="text-gray-400">
-              Strengthen the culture of innovation and collaboration at REC by
-              bringing students, faculty, and innovators together.
+              Build culture, foster innovation, and bring people together.
             </p>
           </div>
+        </div>
+
+        {/* Clubs Section */}
+        <h2 className="text-3xl font-bold mb-8">Explore Clubs at REC</h2>
+        <p className="text-gray-300 mb-12">
+          REC is more than classrooms — it’s where passion meets action.
+          Explore the vibrant student clubs that make our campus culture thrive.
+        </p>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {[
+            { name: "E-CELL REC", href: "/clubs/e-cell" },
+            { name: "GDG REC", href: "/clubs/gdg" },
+            { name: "CSI REC", href: "/clubs/csi" },
+            { name: "GFG REC", href: "/clubs/gfg" },
+            { name: "Chayachitram REC", href: "/clubs/chayachitram" },
+            { name: "Femspire", href: "/clubs/femspire" },
+            { name: "Sports Club", href: "/clubs/sports" },
+            { name: "Chitralaya REC", href: "/clubs/chitralaya" },
+            { name: "Creative Hub REC", href: "/clubs/creative-hub" },
+            { name: "Saptaswara REC", href: "/clubs/saptaswara" },
+          ].map((club, idx) => (
+            <Link
+              key={idx}
+              href={club.href}
+              className="block p-6 bg-zinc-900 rounded-lg shadow hover:scale-105 hover:bg-zinc-800 transition"
+            >
+              <h3 className="text-lg font-semibold">{club.name}</h3>
+              <p className="text-gray-400 text-sm mt-2">
+                Learn more about events, initiatives, and activities from {club.name}.
+              </p>
+            </Link>
+          ))}
         </div>
       </div>
     </section>
