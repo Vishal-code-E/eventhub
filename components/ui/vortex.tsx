@@ -178,6 +178,7 @@ export const Vortex = ({
     x > canvas.width || x < 0 || y > canvas.height || y < 0;
 
   const resize = (canvas: HTMLCanvasElement, _ctx?: CanvasRenderingContext2D) => {
+    if (typeof window === "undefined") return;
     canvas.width  = window.innerWidth;
     canvas.height = window.innerHeight;
     center[0] = 0.5 * canvas.width;
@@ -219,6 +220,7 @@ export const Vortex = ({
       window.removeEventListener("resize", handleResize);
       if (animationFrameId.current) cancelAnimationFrame(animationFrameId.current);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
