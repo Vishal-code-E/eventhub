@@ -1,6 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import React, { useRef } from "react";
+import { CometCard } from "./ui/cometcard";
+
 
 export default function AboutSection() {
   return (
@@ -46,31 +49,26 @@ export default function AboutSection() {
           Explore the vibrant student clubs that make our campus culture thrive.
         </p>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {[
-            { name: "E-CELL REC", href: "/clubs/e-cell" },
-            { name: "GDG REC", href: "/clubs/gdg" },
-            { name: "CSI REC", href: "/clubs/csi" },
-            { name: "GFG REC", href: "/clubs/gfg" },
-            { name: "Chayachitram REC", href: "/clubs/chayachitram" },
-            { name: "Femspire", href: "/clubs/femspire" },
-            { name: "Sports Club", href: "/clubs/sports" },
-            { name: "Chitralaya REC", href: "/clubs/chitralaya" },
-            { name: "Creative Hub REC", href: "/clubs/creative-hub" },
-            { name: "Saptaswara REC", href: "/clubs/saptaswara" },
-          ].map((club, idx) => (
-            <Link
-              key={idx}
-              href={club.href}
-              className="block p-6 bg-zinc-900 rounded-lg shadow hover:scale-105 hover:bg-zinc-800 transition"
-            >
-              <h3 className="text-lg font-semibold">{club.name}</h3>
-              <p className="text-gray-400 text-sm mt-2">
-                Learn more about events, initiatives, and activities from {club.name}.
-              </p>
-            </Link>
-          ))}
-        </div>
+      <div className="grid md:grid-cols-3 gap-8">
+        <CometCard>
+          <h3 className="text-xl font-semibold mb-2">E-CELL REC</h3>
+          <p className="text-gray-400">
+            Dive into programming, hackathons, and tech talks with fellow coders.
+          </p>
+        </CometCard>
+        <CometCard>
+          <h3 className="text-xl font-semibold mb-2">GDG</h3>
+          <p className="text-gray-400">
+            Celebrate diversity through music, dance, drama, and cultural fests.
+          </p>
+        </CometCard>
+        <CometCard>
+          <h3 className="text-xl font-semibold mb-2">CSI</h3>
+          <p className="text-gray-400">
+            Join teams, tournaments, and fitness events to stay active and competitive.
+          </p>
+        </CometCard>
+      </div>
       </div>
     </section>
   );

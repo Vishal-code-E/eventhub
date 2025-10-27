@@ -1,4 +1,4 @@
-import Navbar from '@/components/navbar';
+import Navbar from '@/components/navbar_old';
 
 //Student Dashboard. 
 export default function StudentDashboard() {

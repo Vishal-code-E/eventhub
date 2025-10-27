@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
+import Image from 'next/image';
+import logo from '@/public/logomain2.png';
 
 
 //Navbar component
@@ -12,7 +14,7 @@ import { Menu, X } from 'lucide-react';
 const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
-    { name: 'Portfolio', href: '/portfolio' },
+    { name: 'Clubs', href: '/Clubs' },
     { name: 'Contact', href: '/contact' },
 ];
 
@@ -29,8 +31,8 @@ export default function Navbar() {
                 <div className="flex h-16 items-center justify-between">
                     {/* Logo */}
                     <div className="flex-shrink-0">
-                        <Link href="/" className="text-xl font-bold text-white" aria-label="Homepage">
-                            MyLogo
+                        <Link href="/" aria-label="Homepage" className="flex items-center">
+                            <Image src={logo} alt="Logo" width={56} height={56} />
                         </Link>
                     </div>
 

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/navbar"; 
+import Navbar from "@/components/navbar_old";
 
 
 const geistSans = Geist({
@@ -15,8 +15,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "EVENT-HUB",
+  title: "REC EVENT-HUB",
   description: "College Events Management Portal",
+  icons: {
+    icon: "/logomain2.png",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
