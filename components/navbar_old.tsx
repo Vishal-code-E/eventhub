@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import logo from '@/public/logomain2.png';
+// import { AnimatedThemeToggler } from '@/components/ui/animated-theme-toggler';
 
 
 //Navbar component
@@ -24,7 +25,7 @@ export default function Navbar() {
 
     return (
         <nav
-            className="sticky top-0 z-50 w-full backdrop-blur-sm bg-black/90 border-b border-gray-800"
+            className="sticky top-0 z-50 w-full backdrop-blur-sm bg-white/90 dark:bg-black/90 border-b border-gray-200 dark:border-gray-800"
             aria-label="Main navigation"
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -45,7 +46,7 @@ export default function Navbar() {
                                 className={`relative px-2 py-1 text-sm font-medium transition-colors ${
                                     pathname === link.href
                                         ? 'text-blue-400 underline underline-offset-4'
-                                        : 'text-white hover:text-blue-400'
+                                        : 'text-gray-900 dark:text-white hover:text-blue-400'
                                 }`}
                                 aria-current={pathname === link.href ? 'page' : undefined}
                             >
@@ -54,25 +55,27 @@ export default function Navbar() {
                         ))}
                     </div>
 
-                    {/* Desktop CTA Button */}
-                    <div className="hidden md:flex">
+                    {/* Desktop Right Section - CTA Button */}
+                    <div className="hidden md:flex md:items-center md:space-x-4">
+                        {/* <AnimatedThemeToggler /> */}
                         <Link
                             href="/contact"
-                            className="ml-4 px-4 py-2 rounded-md bg-blue-600 text-white font-semibold shadow hover:bg-blue-700 transition-colors"
+                            className="px-4 py-2 rounded-md bg-blue-600 text-white font-semibold shadow hover:bg-blue-700 transition-colors"
                         >
                             Get in Touch
                         </Link>
                     </div>
 
-                    {/* Mobile Hamburger */}
-                    <div className="md:hidden flex items-center">
+                    {/* Mobile Right Section - Hamburger */}
+                    <div className="md:hidden flex items-center space-x-2">
+                        {/* <AnimatedThemeToggler /> */}
                         <button
                             type="button"
                             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
                             aria-controls="mobile-menu"
                             aria-expanded={mobileOpen}
                             onClick={() => setMobileOpen((open) => !open)}
-                            className="p-2 rounded-md text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="p-2 rounded-md text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         >
                             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
                         </button>
@@ -84,7 +87,7 @@ export default function Navbar() {
             {mobileOpen && (
                 <div
                     id="mobile-menu"
-                    className="fixed inset-0 z-40 bg-black/95 backdrop-blur-sm flex flex-col items-center justify-center md:hidden"
+                    className="fixed inset-0 z-40 bg-white/95 dark:bg-black/95 backdrop-blur-sm flex flex-col items-center justify-center md:hidden"
                     role="dialog"
                     aria-modal="true"
                 >
@@ -92,7 +95,7 @@ export default function Navbar() {
                         type="button"
                         aria-label="Close menu"
                         onClick={() => setMobileOpen(false)}
-                        className="absolute top-6 right-6 p-2 rounded-md text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="absolute top-6 right-6 p-2 rounded-md text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     >
                         <X size={32} />
                     </button>
@@ -105,20 +108,23 @@ export default function Navbar() {
                                 className={`text-2xl font-semibold transition-colors ${
                                     pathname === link.href
                                         ? 'text-blue-400 underline underline-offset-8'
-                                        : 'text-white hover:text-blue-400'
+                                        : 'text-gray-900 dark:text-white hover:text-blue-400'
                                 }`}
                                 aria-current={pathname === link.href ? 'page' : undefined}
                             >
                                 {link.name}
                             </Link>
                         ))}
-                        <Link
-                            href="/contact"
-                            onClick={() => setMobileOpen(false)}
-                            className="mt-6 px-6 py-3 rounded-md bg-blue-600 text-white font-semibold shadow hover:bg-blue-700 transition-colors text-lg"
-                        >
-                            Get in Touch
-                        </Link>
+                        <div className="mt-6 flex flex-col items-center space-y-4">
+                            {/* <AnimatedThemeToggler /> */}
+                            <Link
+                                href="/contact"
+                                onClick={() => setMobileOpen(false)}
+                                className="px-6 py-3 rounded-md bg-blue-600 text-white font-semibold shadow hover:bg-blue-700 transition-colors text-lg"
+                            >
+                                Get in Touch
+                            </Link>
+                        </div>
                       
                     </nav>
                 </div>

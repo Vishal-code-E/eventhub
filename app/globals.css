@@ -134,3 +134,7 @@
   animation: marquee 20s linear infinite;
 }
 
+::view-transition-old(root), ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
