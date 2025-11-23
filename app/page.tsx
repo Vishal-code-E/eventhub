@@ -1,29 +1,15 @@
 import Hero from "@/components/hero";
-import { Vortex } from "@/components/ui/vortex";
 import LogoMarquee from "@/components/LogoMarquee";
 import AboutSection from "@/components/aboutsection";
-import ClientOnly from "@/components/ClientOnly";
 import { Footer } from "@/components/footer";
 
 export default function HomePage() {
   return (
     <main>
-      {/* Vortex background and Hero section */}
-      <ClientOnly fallback={
-        <div className="min-h-[calc(100vh-64px)] bg-white dark:bg-black flex items-center justify-center text-gray-900 dark:text-white">
-          <Hero />
-        </div>
-      }>
-        <Vortex
-          containerClassName="min-h-[calc(100vh-64px)] bg-white dark:bg-black"  
-          className="flex items-center justify-center text-gray-900 dark:text-white"
-          backgroundColor="transparent"
-          baseHue={0}             
-          particleCount={600}
-        >
-          <Hero />
-        </Vortex>
-      </ClientOnly>
+      {/* Hero section */}
+      <div className="min-h-[calc(100vh-64px)] bg-black flex items-center justify-center text-white">
+        <Hero />
+      </div>
       {/* Logo marquee section */}
       <LogoMarquee />
       <AboutSection />
