@@ -15,7 +15,7 @@ import logo from '@/public/logomain2.png';
 const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
-    { name: 'Clubs', href: '/Clubs' },
+    { name: 'Clubs', href: '/clubs' },
     { name: 'Contact', href: '/contact' },
 ];
 
