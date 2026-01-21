@@ -1,9 +1,23 @@
 "use client";
 import Link from "next/link";
+import Antigravity from "./Antigravity";
 
 export default function Hero() {
   return (
-    <div className="relative flex flex-col items-center justify-center min-h-screen">
+    <div className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden">
+      <div className="absolute inset-0 z-0 w-full h-full">
+        <Antigravity
+          count={400}
+          magnetRadius={12}
+          ringRadius={12}
+          waveSpeed={0.5}
+          waveAmplitude={1.2}
+          particleSize={2}
+          color="#FF9FFC"
+          autoAnimate={true}
+          particleShape="capsule"
+        />
+      </div>
       <section className="relative z-10 text-white text-center px-6 py-16">
         <h1 className="text-5xl md:text-6xl font-extrabold mb-6">
           Welcome to <span className="text-gray-300">EventHub</span>
