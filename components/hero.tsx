@@ -4,7 +4,7 @@ import Antigravity from "./Antigravity";
 
 export default function Hero() {
   return (
-    <div className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden">
+    <div className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden bg-black">
       <div className="absolute inset-0 z-0 w-full h-full">
         <Antigravity
           count={400}
