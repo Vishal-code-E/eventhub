@@ -4,18 +4,23 @@ import Antigravity from "./Antigravity";
 
 export default function Hero() {
   return (
-    <div className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden bg-black">
+    <div className="relative flex flex-col items-center justify-center w-full h-screen overflow-hidden bg-black">
       <div className="absolute inset-0 z-0 w-full h-full">
         <Antigravity
-          count={400}
-          magnetRadius={12}
-          ringRadius={12}
-          waveSpeed={0.5}
-          waveAmplitude={1.2}
-          particleSize={2}
-          color="#FF9FFC"
-          autoAnimate={true}
-          particleShape="capsule"
+          count={600}
+          magnetRadius={30}
+          ringRadius={18}
+          waveSpeed={0.8}
+          waveAmplitude={2}
+          particleSize={3}
+          color="#ffffff"
+          autoAnimate={false}
+          particleShape="sphere"
+          lerpSpeed={0.08}
+          fieldStrength={5}
+          particleVariance={1.5}
+          pulseSpeed={4}
+          rotationSpeed={0.3}
         />
       </div>
       <section className="relative z-10 text-white text-center px-6 py-16">

@@ -180,20 +180,27 @@ const AntigravityInner: React.FC<AntigravityProps> = ({
       {particleShape === 'sphere' && <sphereGeometry args={[0.2, 16, 16]} />}
       {particleShape === 'box' && <boxGeometry args={[0.3, 0.3, 0.3]} />}
       {particleShape === 'tetrahedron' && <tetrahedronGeometry args={[0.3]} />}
-      <meshBasicMaterial color={color} />
+      <meshStandardMaterial 
+        color={color} 
+        emissive={color}
+        emissiveIntensity={2}
+        toneMapped={false}
+      />
     </instancedMesh>
   );
 };
 
 const Antigravity: React.FC<AntigravityProps> = props => {
   return (
-    <div style={{ width: '100%', height: '100%' }}>
+    <div style={{ width: '100%', height: '100%', position: 'absolute', inset: 0 }}>
       <Canvas 
         camera={{ position: [0, 0, 50], fov: 35 }}
         style={{ background: 'transparent' }}
+        gl={{ alpha: true, antialias: true, powerPreference: 'high-performance' }}
       >
         <color attach="background" args={['#000000']} />
         <ambientLight intensity={0.5} />
+        <pointLight position={[10, 10, 10]} intensity={1} />
         <AntigravityInner {...props} />
       </Canvas>
     </div>

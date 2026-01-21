@@ -7,7 +7,7 @@ export default function HomePage() {
   return (
     <main>
       {/* Hero section */}
-      <div className="min-h-[calc(100vh-64px)] flex items-center justify-center text-white">
+      <div className="w-full h-screen flex items-center justify-center text-white">
         <Hero />
       </div>
       {/* Logo marquee section */}
