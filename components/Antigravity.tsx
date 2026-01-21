@@ -192,11 +192,13 @@ const AntigravityInner: React.FC<AntigravityProps> = ({
 
 const Antigravity: React.FC<AntigravityProps> = props => {
   return (
-    <div style={{ width: '100%', height: '100%', position: 'absolute', inset: 0 }}>
+    <div style={{ width: '100%', height: '100%', position: 'fixed', inset: 0, zIndex: 0 }}>
       <Canvas 
         camera={{ position: [0, 0, 50], fov: 35 }}
-        style={{ background: 'transparent' }}
+        style={{ background: 'transparent', touchAction: 'none' }}
         gl={{ alpha: true, antialias: true, powerPreference: 'high-performance' }}
+        eventSource={typeof window !== 'undefined' ? document.body : undefined}
+        eventPrefix="client"
       >
         <color attach="background" args={['#000000']} />
         <ambientLight intensity={0.5} />
