@@ -1,7 +1,6 @@
 "use client";
 
-import Link from "next/link";
-import React, { useRef } from "react";
+import React from "react";
 import { CometCard } from "./ui/cometcard";
 
 
