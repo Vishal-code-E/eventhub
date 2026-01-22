@@ -197,8 +197,6 @@ const Antigravity: React.FC<AntigravityProps> = props => {
         camera={{ position: [0, 0, 50], fov: 35 }}
         style={{ background: 'transparent', touchAction: 'none' }}
         gl={{ alpha: true, antialias: true, powerPreference: 'high-performance' }}
-        eventSource={typeof window !== 'undefined' ? document.body : undefined}
-        eventPrefix="client"
       >
         <color attach="background" args={['#000000']} />
         <ambientLight intensity={0.5} />

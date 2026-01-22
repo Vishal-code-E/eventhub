@@ -1,27 +1,30 @@
 "use client";
 import Link from "next/link";
 import Antigravity from "./Antigravity";
+import ClientOnly from "./ClientOnly";
 
 export default function Hero() {
   return (
     <div className="relative flex flex-col items-center justify-center w-full h-screen overflow-hidden bg-black">
       <div className="absolute inset-0 z-0 w-full h-full">
-        <Antigravity
-          magnetRadius={6}
-          ringRadius={7}
-          waveSpeed={0.4}
-          waveAmplitude={1}
-          particleSize={1.5}
-          particleVariance={1}
-          lerpSpeed={0.05}
-          count={300}
-          rotationSpeed={0}
-          depthFactor={1}
-          pulseSpeed={3}
-          fieldStrength={10}
-          color="#ffffff"
-          particleShape="capsule"
-        />
+        <ClientOnly>
+          <Antigravity
+            magnetRadius={6}
+            ringRadius={7}
+            waveSpeed={0.4}
+            waveAmplitude={1}
+            particleSize={1.5}
+            particleVariance={1}
+            lerpSpeed={0.05}
+            count={300}
+            rotationSpeed={0}
+            depthFactor={1}
+            pulseSpeed={3}
+            fieldStrength={10}
+            color="#ffffff"
+            particleShape="capsule"
+          />
+        </ClientOnly>
       </div>
       <section className="relative z-10 text-white text-center px-6 py-16 pointer-events-none">
         <h1 className="text-5xl md:text-6xl font-extrabold mb-6">
