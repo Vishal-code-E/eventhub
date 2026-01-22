@@ -18,46 +18,100 @@ export default function AboutSection() {
 
         <div className="grid md:grid-cols-3 gap-8">
           <TiltedCard
-            imageSrc="/clubs/ecell.jpg"
+            imageSrc="https://placehold.co/400x400/1a1a1a/ffffff?text=E-CELL+REC"
             altText="E-CELL REC"
             captionText="E-CELL REC"
             containerHeight="350px"
             imageHeight="350px"
+            scaleOnHover={1.15}
+            rotateAmplitude={18}
+            showTooltip={true}
+            overlayContent={
+              <div className="text-center p-4">
+                <p className="text-sm">Innovation • Entrepreneurship • Technology</p>
+              </div>
+            }
+            displayOverlayContent={true}
           />
           <TiltedCard
-            imageSrc="/clubs/gdg.jpg"
+            imageSrc="https://placehold.co/400x400/1a1a1a/ffffff?text=GDG"
             altText="GDG"
             captionText="GDG"
             containerHeight="350px"
             imageHeight="350px"
+            scaleOnHover={1.12}
+            rotateAmplitude={16}
+            showTooltip={true}
+            overlayContent={
+              <div className="text-center p-4">
+                <p className="text-sm">Google Developer Group</p>
+              </div>
+            }
+            displayOverlayContent={true}
           />
           <TiltedCard
-            imageSrc="/clubs/csi.jpg"
+            imageSrc="https://placehold.co/400x400/1a1a1a/ffffff?text=CSI"
             altText="CSI"
             captionText="CSI"
             containerHeight="350px"
             imageHeight="350px"
+            scaleOnHover={1.1}
+            rotateAmplitude={14}
+            showTooltip={true}
+            overlayContent={
+              <div className="text-center p-4">
+                <p className="text-sm">Computer Society of India</p>
+              </div>
+            }
+            displayOverlayContent={true}
           />
           <TiltedCard
-            imageSrc="/clubs/ieee.jpg"
+            imageSrc="https://placehold.co/400x400/1a1a1a/ffffff?text=IEEE"
             altText="IEEE"
             captionText="IEEE"
             containerHeight="350px"
             imageHeight="350px"
+            scaleOnHover={1.13}
+            rotateAmplitude={15}
+            showTooltip={true}
+            overlayContent={
+              <div className="text-center p-4">
+                <p className="text-sm">Technology • Research • Innovation</p>
+              </div>
+            }
+            displayOverlayContent={true}
           />
           <TiltedCard
-            imageSrc="/clubs/nss.jpg"
+            imageSrc="https://placehold.co/400x400/1a1a1a/ffffff?text=NSS"
             altText="NSS"
             captionText="NSS"
             containerHeight="350px"
             imageHeight="350px"
+            scaleOnHover={1.14}
+            rotateAmplitude={17}
+            showTooltip={true}
+            overlayContent={
+              <div className="text-center p-4">
+                <p className="text-sm">National Service Scheme</p>
+              </div>
+            }
+            displayOverlayContent={true}
           />
           <TiltedCard
-            imageSrc="/clubs/rotaract.jpg"
+            imageSrc="https://placehold.co/400x400/1a1a1a/ffffff?text=Rotaract+Club"
             altText="Rotaract Club"
             captionText="Rotaract Club"
             containerHeight="350px"
             imageHeight="350px"
+            scaleOnHover={1.11}
+            rotateAmplitude={16}
+            showTooltip={true}
+            overlayContent={
+              <div className="text-center p-4">
+                <p className="text-sm">Service • Leadership • Fellowship</p>
+              </div>
+            }
+            displayOverlayContent={true}
           />
         </div>
       </div>
