@@ -250,22 +250,26 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     const icon = iconRef.current;
     const h = plusHRef.current;
     const v = plusVRef.current;
+    const middle = icon?.querySelector('.sm-icon-line-middle') as HTMLElement;
     if (!icon || !h || !v) return;
 
     spinTweenRef.current?.kill();
 
     if (opening) {
-      // ensure container never rotates
+      // Hamburger to X animation
       gsap.set(icon, { rotate: 0, transformOrigin: '50% 50%' });
       spinTweenRef.current = gsap
         .timeline({ defaults: { ease: 'power4.out' } })
-        .to(h, { rotate: 45, duration: 0.5 }, 0)
-        .to(v, { rotate: -45, duration: 0.5 }, 0);
+        .to(h, { rotate: 45, y: 5, duration: 0.4 }, 0)
+        .to(v, { rotate: -45, y: -5, duration: 0.4 }, 0)
+        .to(middle, { opacity: 0, duration: 0.2 }, 0);
     } else {
+      // X to Hamburger animation
       spinTweenRef.current = gsap
         .timeline({ defaults: { ease: 'power3.inOut' } })
-        .to(h, { rotate: 0, duration: 0.35 }, 0)
-        .to(v, { rotate: 90, duration: 0.35 }, 0)
+        .to(h, { rotate: 0, y: 0, duration: 0.35 }, 0)
+        .to(v, { rotate: 0, y: 0, duration: 0.35 }, 0)
+        .to(middle, { opacity: 1, duration: 0.2 }, 0.15)
         .to(icon, { rotate: 0, duration: 0.001 }, 0);
     }
   }, []);
@@ -427,46 +431,59 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
             />
           </div>
 
-          <button
-            ref={toggleBtnRef}
-            className={`sm-toggle relative inline-flex items-center gap-[0.3rem] bg-transparent border-0 cursor-pointer font-medium leading-none overflow-visible pointer-events-auto ${
-              open ? 'text-black' : 'text-[#e9e9ef]'
-            }`}
-            aria-label={open ? 'Close menu' : 'Open menu'}
-            aria-expanded={open}
-            aria-controls="staggered-menu-panel"
-            onClick={toggleMenu}
-            type="button"
-          >
-            <span
-              ref={textWrapRef}
-              className="sm-toggle-textWrap relative inline-block h-[1em] overflow-hidden whitespace-nowrap w-[var(--sm-toggle-width,auto)] min-w-[var(--sm-toggle-width,auto)]"
-              aria-hidden="true"
+          <div className="flex items-center gap-4 pointer-events-auto">
+            {/* Login Button */}
+            <a
+              href="/login"
+              className="px-4 py-2 bg-white text-black font-medium text-sm rounded-lg hover:bg-gray-200 transition-colors"
             >
-              <span ref={textInnerRef} className="sm-toggle-textInner flex flex-col leading-none">
-                {textLines.map((l, i) => (
-                  <span className="sm-toggle-line block h-[1em] leading-none" key={i}>
-                    {l}
-                  </span>
-                ))}
-              </span>
-            </span>
+              Login
+            </a>
 
-            <span
-              ref={iconRef}
-              className="sm-icon relative w-[10px] h-[10px] shrink-0 inline-flex items-center justify-center [will-change:transform]"
-              aria-hidden="true"
+            {/* Menu Button */}
+            <button
+              ref={toggleBtnRef}
+              className={`sm-toggle relative inline-flex items-center gap-[0.5rem] bg-transparent border-0 cursor-pointer font-medium text-sm leading-none overflow-visible ${
+                open ? 'text-black' : 'text-[#e9e9ef]'
+              }`}
+              aria-label={open ? 'Close menu' : 'Open menu'}
+              aria-expanded={open}
+              aria-controls="staggered-menu-panel"
+              onClick={toggleMenu}
+              type="button"
             >
               <span
-                ref={plusHRef}
-                className="sm-icon-line absolute left-1/2 top-1/2 w-full h-[1.5px] bg-current rounded-[1px] -translate-x-1/2 -translate-y-1/2 [will-change:transform]"
-              />
+                ref={textWrapRef}
+                className="sm-toggle-textWrap relative inline-block h-[1em] overflow-hidden whitespace-nowrap w-[var(--sm-toggle-width,auto)] min-w-[var(--sm-toggle-width,auto)]"
+                aria-hidden="true"
+              >
+                <span ref={textInnerRef} className="sm-toggle-textInner flex flex-col leading-none">
+                  {textLines.map((l, i) => (
+                    <span className="sm-toggle-line block h-[1em] leading-none" key={i}>
+                      {l}
+                    </span>
+                  ))}
+                </span>
+              </span>
+
+              {/* Hamburger Icon */}
               <span
-                ref={plusVRef}
-                className="sm-icon-line sm-icon-line-v absolute left-1/2 top-1/2 w-full h-[1.5px] bg-current rounded-[1px] -translate-x-1/2 -translate-y-1/2 [will-change:transform]"
-              />
-            </span>
-          </button>
+                ref={iconRef}
+                className="sm-icon relative w-[18px] h-[14px] shrink-0 inline-flex flex-col items-center justify-center gap-[3px] [will-change:transform]"
+                aria-hidden="true"
+              >
+                <span
+                  ref={plusHRef}
+                  className="sm-icon-line w-full h-[2px] bg-current rounded-[1px] transition-transform origin-center [will-change:transform]"
+                />
+                <span className="sm-icon-line-middle w-full h-[2px] bg-current rounded-[1px] transition-opacity" />
+                <span
+                  ref={plusVRef}
+                  className="sm-icon-line w-full h-[2px] bg-current rounded-[1px] transition-transform origin-center [will-change:transform]"
+                />
+              </span>
+            </button>
+          </div>
         </header>
 
         <aside
