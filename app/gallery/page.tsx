@@ -1,8 +1,36 @@
 "use client";
 
 import DomeGallery from "@/components/DomeGallery";
+import { useEffect, useRef } from "react";
 
 export default function GalleryPage() {
+  const autoRotateRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    // Auto-rotate the dome gallery
+    let rotation = 0;
+    const animate = () => {
+      rotation += 0.3; // Rotation speed
+      const sphereElement = document.querySelector('.dg-sphere') as HTMLElement;
+      if (sphereElement) {
+        sphereElement.style.transform = `translateZ(calc(var(--radius) * -1)) rotateX(0deg) rotateY(${rotation}deg)`;
+      }
+      autoRotateRef.current = requestAnimationFrame(animate);
+    };
+
+    // Start animation after a short delay
+    const timeoutId = setTimeout(() => {
+      animate();
+    }, 500);
+
+    return () => {
+      clearTimeout(timeoutId);
+      if (autoRotateRef.current) {
+        cancelAnimationFrame(autoRotateRef.current);
+      }
+    };
+  }, []);
+
   const galleryImages = [
     { src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800", alt: "Tech Event 1" },
     { src: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800", alt: "Tech Event 2" },
