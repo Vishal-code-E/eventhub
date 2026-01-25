@@ -5,7 +5,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../auth/[...nextauth]/route";
+import { authOptions } from "../../auth/[...nextauth]/route";
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
@@ -65,6 +65,14 @@ export async function POST(request: NextRequest) {
         rollNumber: rollNumber.trim(),
         isProfileComplete: true,
         updatedAt: new Date(),
+      },
+      select: {
+        id: true,
+        email: true,
+        firstName: true,
+        lastName: true,
+        phoneNumber: true,
+        rollNumber: true,
       },
     });
 

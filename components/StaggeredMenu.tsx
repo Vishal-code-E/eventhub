@@ -5,6 +5,7 @@ export interface StaggeredMenuItem {
   label: string;
   ariaLabel: string;
   link: string;
+  onClick?: () => void;
 }
 export interface StaggeredMenuSocialItem {
   label: string;

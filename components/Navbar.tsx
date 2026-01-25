@@ -39,7 +39,9 @@ export default function Navbar() {
           label: 'Logout', 
           ariaLabel: 'Logout from your account', 
           link: '#',
-          onClick: () => signOut({ callbackUrl: '/signup' })
+          onClick: () => {
+            signOut({ callbackUrl: '/signup' });
+          }
         },
       ]);
     } else {
@@ -52,7 +54,7 @@ export default function Navbar() {
         { label: 'Mentorship', ariaLabel: 'View mentorship', link: '/mentorship' },
         { label: 'About', ariaLabel: 'About us', link: '/about' },
         { label: 'Contact', ariaLabel: 'Contact us', link: '/contact' },
-        { label: 'Login', ariaLabel: 'Login to your account', link: '/login' },
+        { label: 'Login', ariaLabel: 'Login to your account', link: '/signup' },
       ]);
     }
   }, [status, session]);

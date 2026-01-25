@@ -1,63 +1,88 @@
 /**
  * Middleware - Route Protection for Event Hub
  * 
- * This middleware ensures that:
- * 1. Unauthenticated users are redirected to /signup
- * 2. Authenticated users with incomplete profiles are redirected to /signup
- * 3. Only fully authenticated users can access protected routes
+ * DEVELOPMENT MODE: Authentication is optional to allow building
+ * PRODUCTION MODE: Uncomment the withAuth wrapper to enforce authentication
  * 
- * Public Routes (No Auth Required):
- * - /signup
+ * To enable full authentication:
+ * 1. Uncomment the withAuth export at the bottom
+ * 2. Comment out the simple export default
+ * 
+ * Protected Routes (when auth is enabled):
+ * - /admin/* - Admin dashboard
+ * - /student/dashboard - Student dashboard
+ * 
+ * Public Routes (always accessible):
+ * - / - Home page
+ * - /events, /clubs, /gallery, /about, /contact
+ * - /signup, /login
  * - /api/auth/* (NextAuth endpoints)
- * 
- * Protected Routes (Auth Required):
- * - All other routes (/, /events, /clubs, /gallery, etc.)
  */
 
 import { withAuth } from "next-auth/middleware";
 import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
+/**
+ * DEVELOPMENT MODE - Allow all routes
+ * This lets you build the site without authentication blocking navigation
+ */
+export default function middleware(req: NextRequest) {
+  // Allow all routes during development
+  return NextResponse.next();
+}
+
+/**
+ * PRODUCTION MODE - Full Authentication
+ * Uncomment this section and comment out the above function to enable auth
+ */
+/*
 export default withAuth(
   function middleware(req) {
     const token = req.nextauth.token;
     const path = req.nextUrl.pathname;
 
-    // Allow access to signup and auth routes
-    if (path.startsWith("/signup") || path.startsWith("/api/auth")) {
-      return NextResponse.next();
-    }
+    // Protected routes - require authentication
+    const protectedRoutes = [
+      '/admin',
+      '/student/dashboard',
+    ];
 
-    // Check if user is authenticated
-    if (!token) {
-      // Redirect to signup if not authenticated
+    // Check if current path is protected
+    const isProtectedRoute = protectedRoutes.some(route => path.startsWith(route));
+
+    // Redirect to signup if trying to access protected route without auth
+    if (isProtectedRoute && !token) {
       const signupUrl = new URL("/signup", req.url);
       return NextResponse.redirect(signupUrl);
     }
 
-    // Allow authenticated users to proceed
-    // Note: Profile completion check is handled client-side in the signup page
+    // Allow all other routes
     return NextResponse.next();
   },
   {
     callbacks: {
-      /**
-       * Determines if the middleware should run
-       * Returns true to run middleware, false to skip
-       */
       authorized: ({ token, req }) => {
         const path = req.nextUrl.pathname;
 
         // Always allow access to public routes
         if (
           path.startsWith("/signup") ||
+          path.startsWith("/login") ||
           path.startsWith("/api/auth") ||
-          path.startsWith("/_next") || // Next.js internal routes
-          path.startsWith("/favicon") // Favicon requests
+          path.startsWith("/_next") ||
+          path.startsWith("/favicon") ||
+          path === "/" ||
+          path.startsWith("/events") ||
+          path.startsWith("/clubs") ||
+          path.startsWith("/gallery") ||
+          path.startsWith("/about") ||
+          path.startsWith("/contact")
         ) {
           return true;
         }
 
-        // For all other routes, require authentication
+        // For protected routes, require authentication
         return !!token;
       },
     },
@@ -66,25 +91,16 @@ export default withAuth(
     },
   }
 );
+*/
 
 /**
  * Matcher Configuration
  * Defines which routes the middleware should run on
- * 
- * Excludes:
- * - Static files (_next/static)
- * - Image optimization (_next/image)
- * - Favicon files
- * - Public folder assets
  */
 export const config = {
   matcher: [
     /*
-     * Match all request paths except:
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * - public folder files
+     * Match all request paths except static files
      */
     "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
   ],
