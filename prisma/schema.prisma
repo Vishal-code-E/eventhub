@@ -14,14 +14,21 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  name      String?
-  email     String   @unique
-  image     String?
-  role      Role     @default(STUDENT)
-  clubId    String?  
-  club      Club?    @relation(fields: [clubId], references: [id])
+  id            String   @id @default(cuid())
+  email         String   @unique
+  firstName     String?
+  lastName      String?
+  name          String?
+  phoneNumber   String?
+  rollNumber    String?
+  image         String?
+  role          Role     @default(STUDENT)
+  isProfileComplete Boolean @default(false)
+  clubId        String?  
+  club          Club?    @relation(fields: [clubId], references: [id])
   registrations Registration[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 }
 
 model Club {
