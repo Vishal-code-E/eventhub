@@ -432,14 +432,6 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
           </div>
 
           <div className="flex items-center gap-4 pointer-events-auto">
-            {/* Login Button */}
-            <a
-              href="/login"
-              className="px-4 py-2 bg-white text-black font-medium text-sm rounded-lg hover:bg-gray-200 transition-colors"
-            >
-              Login
-            </a>
-
             {/* Menu Button */}
             <button
               ref={toggleBtnRef}
@@ -507,6 +499,13 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                       href={it.link}
                       aria-label={it.ariaLabel}
                       data-index={idx + 1}
+                      onClick={(e) => {
+                        if ((it as any).onClick) {
+                          e.preventDefault();
+                          (it as any).onClick();
+                        }
+                        closeMenu();
+                      }}
                     >
                       <span className="sm-panel-itemLabel inline-block [transform-origin:50%_100%] will-change-transform">
                         {it.label}
