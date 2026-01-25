@@ -307,28 +307,15 @@ function SignupContent() {
         </div>
 
         {/* Right Side - Image */}
-        <div className="hidden lg:flex flex-1 relative bg-gradient-to-br from-blue-600 via-purple-600 to-pink-500">
-          <div className="absolute inset-0 flex items-center justify-center p-12 text-white">
-            <div className="text-center space-y-6">
-              <h1 className="text-5xl font-bold">Almost There!</h1>
-              <p className="text-xl opacity-90">
-                Complete your profile to unlock exclusive campus events
-              </p>
-              <div className="grid grid-cols-3 gap-4 mt-8">
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-                  <div className="text-3xl mb-2">🎤</div>
-                  <div className="text-sm">Concerts</div>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-                  <div className="text-3xl mb-2">💻</div>
-                  <div className="text-sm">Tech Fests</div>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-                  <div className="text-3xl mb-2">📚</div>
-                  <div className="text-sm">Seminars</div>
-                </div>
-              </div>
-            </div>
+        <div className="hidden lg:flex flex-1 relative bg-black overflow-hidden">
+          <div className="relative w-full h-full flex items-center justify-center p-8">
+            <Image
+              src="/signup image .png"
+              alt="Event Hub Signup"
+              fill
+              className="object-contain"
+              priority
+            />
           </div>
         </div>
       </div>
@@ -411,53 +398,31 @@ function SignupContent() {
         </div>
       </div>
 
-      {/* Right Side - Visual/Image Section */}
-      <div className="hidden lg:flex flex-1 relative bg-gradient-to-br from-blue-600 via-purple-600 to-pink-500 overflow-hidden">
-        {/* Animated background pattern */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-white rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-300 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        </div>
-
-        {/* Content */}
-        <div className="relative z-10 flex flex-col items-center justify-center p-12 text-white">
-          <h2 className="text-5xl font-bold mb-6 text-center">
-            Never Miss a Campus Event
-          </h2>
-          <p className="text-xl text-center mb-12 opacity-90 max-w-md">
-            Book tickets, discover events, and connect with your campus community
-          </p>
-
-          {/* Feature Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl">
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all">
-              <div className="text-4xl mb-3">🎤</div>
-              <h3 className="font-semibold text-lg mb-2">Live Concerts</h3>
-              <p className="text-sm opacity-80">Experience amazing live music performances</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all">
-              <div className="text-4xl mb-3">💻</div>
-              <h3 className="font-semibold text-lg mb-2">Tech Festivals</h3>
-              <p className="text-sm opacity-80">Hackathons, workshops, and tech talks</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all">
-              <div className="text-4xl mb-3">📚</div>
-              <h3 className="font-semibold text-lg mb-2">Academic Seminars</h3>
-              <p className="text-sm opacity-80">Learn from industry experts and professors</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all">
-              <div className="text-4xl mb-3">🎭</div>
-              <h3 className="font-semibold text-lg mb-2">Cultural Events</h3>
-              <p className="text-sm opacity-80">Celebrate diversity through art and culture</p>
-            </div>
-          </div>
+      {/* Right Side - Image Section */}
+      <div className="hidden lg:flex flex-1 relative bg-black overflow-hidden">
+        {/* Signup Image */}
+        <div className="relative w-full h-full flex items-center justify-center p-8">
+          <Image
+            src="/signup image .png"
+            alt="Event Hub Signup"
+            fill
+            className="object-contain"
+            priority
+          />
         </div>
       </div>
 
       {/* Mobile Image Section */}
-      <div className="lg:hidden bg-gradient-to-br from-blue-600 via-purple-600 to-pink-500 p-8 text-white text-center">
-        <h2 className="text-3xl font-bold mb-4">Discover Campus Events</h2>
-        <p className="opacity-90">Your one-stop platform for all college events</p>
+      <div className="lg:hidden bg-black p-8 text-white text-center relative h-64">
+        <div className="relative w-full h-full">
+          <Image
+            src="/signup image .png"
+            alt="Event Hub Signup"
+            fill
+            className="object-contain"
+            priority
+          />
+        </div>
       </div>
     </div>
   );
