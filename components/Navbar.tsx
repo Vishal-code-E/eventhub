@@ -1,9 +1,12 @@
 'use client';
 
 import StaggeredMenu from '@/components/StaggeredMenu';
+import { useSession, signOut } from 'next-auth/react';
+import { useEffect, useState } from 'react';
 
 export default function Navbar() {
-  const menuItems = [
+  const { data: session, status } = useSession();
+  const [menuItems, setMenuItems] = useState([
     { label: 'Home', ariaLabel: 'Go to home page', link: '/' },
     { label: 'Events', ariaLabel: 'View events', link: '/events' },
     { label: 'Clubs', ariaLabel: 'View clubs', link: '/clubs' },
@@ -13,7 +16,46 @@ export default function Navbar() {
     { label: 'About', ariaLabel: 'About us', link: '/about' },
     { label: 'Contact', ariaLabel: 'Contact us', link: '/contact' },
     { label: 'Login', ariaLabel: 'Login to your account', link: '/login' },
-  ];
+  ]);
+
+  useEffect(() => {
+    // Update menu based on authentication status
+    if (status === 'authenticated' && session?.user) {
+      setMenuItems([
+        { label: 'Home', ariaLabel: 'Go to home page', link: '/' },
+        { label: 'Events', ariaLabel: 'View events', link: '/events' },
+        { label: 'Clubs', ariaLabel: 'View clubs', link: '/clubs' },
+        { label: 'Gallery', ariaLabel: 'View gallery', link: '/gallery' },
+        { label: 'Competitions', ariaLabel: 'View competitions', link: '/competitions' },
+        { label: 'Mentorship', ariaLabel: 'View mentorship', link: '/mentorship' },
+        { label: 'About', ariaLabel: 'About us', link: '/about' },
+        { label: 'Contact', ariaLabel: 'Contact us', link: '/contact' },
+        { 
+          label: 'Dashboard', 
+          ariaLabel: 'View your dashboard', 
+          link: session.user.role === 'ADMIN' ? '/admin/admind' : '/student/dashboard' 
+        },
+        { 
+          label: 'Logout', 
+          ariaLabel: 'Logout from your account', 
+          link: '#',
+          onClick: () => signOut({ callbackUrl: '/signup' })
+        },
+      ]);
+    } else {
+      setMenuItems([
+        { label: 'Home', ariaLabel: 'Go to home page', link: '/' },
+        { label: 'Events', ariaLabel: 'View events', link: '/events' },
+        { label: 'Clubs', ariaLabel: 'View clubs', link: '/clubs' },
+        { label: 'Gallery', ariaLabel: 'View gallery', link: '/gallery' },
+        { label: 'Competitions', ariaLabel: 'View competitions', link: '/competitions' },
+        { label: 'Mentorship', ariaLabel: 'View mentorship', link: '/mentorship' },
+        { label: 'About', ariaLabel: 'About us', link: '/about' },
+        { label: 'Contact', ariaLabel: 'Contact us', link: '/contact' },
+        { label: 'Login', ariaLabel: 'Login to your account', link: '/login' },
+      ]);
+    }
+  }, [status, session]);
 
   const socialItems = [
     { label: 'Instagram', link: '#' },
