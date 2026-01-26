@@ -91,7 +91,7 @@ export default function EventDetailClient({ event, isAuthenticated, isRegistered
         )}
         
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-black via-black/50 to-transparent" />
 
         {/* Title Overlay */}
         <div className="absolute bottom-0 left-0 right-0 p-8">
