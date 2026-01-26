@@ -102,7 +102,7 @@ export const CometCard = ({
       >
         {children}
         <motion.div
-          className="pointer-events-none absolute inset-0 z-50 h-full w-full rounded-[16px] mix-blend-overlay"
+          className="pointer-events-none absolute inset-0 z-50 h-full w-full rounded-2xl mix-blend-overlay"
           style={{
             background: glareBackground,
             opacity: 0.6,

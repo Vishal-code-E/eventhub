@@ -397,7 +397,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
       >
         <div
           ref={preLayersRef}
-          className="sm-prelayers absolute top-0 right-0 bottom-0 pointer-events-none z-[5]"
+          className="sm-prelayers absolute top-0 right-0 bottom-0 pointer-events-none z-5"
           aria-hidden="true"
         >
           {(() => {
@@ -436,7 +436,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
             {/* Menu Button */}
             <button
               ref={toggleBtnRef}
-              className={`sm-toggle relative inline-flex items-center gap-[0.5rem] bg-transparent border-0 cursor-pointer font-medium text-sm leading-none overflow-visible ${
+              className={`sm-toggle relative inline-flex items-center gap-2 bg-transparent border-0 cursor-pointer font-medium text-sm leading-none overflow-visible ${
                 open ? 'text-black' : 'text-[#e9e9ef]'
               }`}
               aria-label={open ? 'Close menu' : 'Open menu'}
@@ -462,17 +462,17 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
               {/* Hamburger Icon */}
               <span
                 ref={iconRef}
-                className="sm-icon relative w-[18px] h-[14px] shrink-0 inline-flex flex-col items-center justify-center gap-[3px] [will-change:transform]"
+                className="sm-icon relative w-[18px] h-3.5 shrink-0 inline-flex flex-col items-center justify-center gap-[3px] will-change-transform"
                 aria-hidden="true"
               >
                 <span
                   ref={plusHRef}
-                  className="sm-icon-line w-full h-[2px] bg-current rounded-[1px] transition-transform origin-center [will-change:transform]"
+                  className="sm-icon-line w-full h-0.5 bg-current rounded-[1px] transition-transform origin-center will-change-transform"
                 />
-                <span className="sm-icon-line-middle w-full h-[2px] bg-current rounded-[1px] transition-opacity" />
+                <span className="sm-icon-line-middle w-full h-0.5 bg-current rounded-[1px] transition-opacity" />
                 <span
                   ref={plusVRef}
-                  className="sm-icon-line w-full h-[2px] bg-current rounded-[1px] transition-transform origin-center [will-change:transform]"
+                  className="sm-icon-line w-full h-0.5 bg-current rounded-[1px] transition-transform origin-center will-change-transform"
                 />
               </span>
             </button>
@@ -482,7 +482,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         <aside
           id="staggered-menu-panel"
           ref={panelRef}
-          className="staggered-menu-panel absolute top-0 right-0 h-full bg-white flex flex-col p-[6em_2em_2em_2em] overflow-y-auto z-10 backdrop-blur-[12px] pointer-events-auto"
+          className="staggered-menu-panel absolute top-0 right-0 h-full bg-white flex flex-col p-[6em_2em_2em_2em] overflow-y-auto z-10 backdrop-blur-md pointer-events-auto"
           style={{ WebkitBackdropFilter: 'blur(12px)' }}
           aria-hidden={!open}
         >
@@ -508,7 +508,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                         closeMenu();
                       }}
                     >
-                      <span className="sm-panel-itemLabel inline-block [transform-origin:50%_100%] will-change-transform">
+                      <span className="sm-panel-itemLabel inline-block origin-[50%_100%] will-change-transform">
                         {it.label}
                       </span>
                     </a>
@@ -517,7 +517,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
               ) : (
                 <li className="sm-panel-itemWrap relative overflow-hidden leading-none" aria-hidden="true">
                   <span className="sm-panel-item relative text-black font-semibold text-[4rem] cursor-pointer leading-none tracking-[-2px] uppercase transition-[background,color] duration-150 ease-linear inline-block no-underline pr-[1.4em]">
-                    <span className="sm-panel-itemLabel inline-block [transform-origin:50%_100%] will-change-transform">
+                    <span className="sm-panel-itemLabel inline-block origin-[50%_100%] will-change-transform">
                       No items
                     </span>
                   </span>

@@ -14,45 +14,48 @@ datasource db {
 }
 
 model User {
-  id            String   @id @default(cuid())
-  email         String   @unique
-  firstName     String?
-  lastName      String?
-  name          String?
-  phoneNumber   String?
-  rollNumber    String?
-  image         String?
-  role          Role     @default(STUDENT)
-  isProfileComplete Boolean @default(false)
-  clubId        String?  
-  club          Club?    @relation(fields: [clubId], references: [id])
-  registrations Registration[]
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  id                 String              @id @default(cuid())
+  email              String              @unique
+  firstName          String?
+  lastName           String?
+  name               String?
+  phoneNumber        String?
+  rollNumber         String?
+  image              String?
+  role               Role                @default(STUDENT)
+  isProfileComplete  Boolean             @default(false)
+  clubId             String?
+  club               Club?               @relation(fields: [clubId], references: [id])
+  registrations      Registration[]
+  eventRegistrations EventRegistration[]
+  notifications      Notification[]
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
 }
 
 model Club {
-  id          String   @id @default(cuid())
-  name        String
-  description String
-  logoUrl     String?
-  contact     String
-  socialLinks Json
-  events      Event[]
+  id           String  @id @default(cuid())
+  name         String
+  description  String
+  logoUrl      String?
+  contact      String
+  socialLinks  Json
+  events       Event[]
   coordinators User[]
 }
 
 model Event {
-  id          String   @id @default(cuid())
-  title       String
-  description String
-  date        DateTime
-  location    String
-  posterUrl   String?
-  clubId      String
-  club        Club     @relation(fields: [clubId], references: [id])
-  registrations Registration[]
-  gallery     Gallery[]
+  id                 String              @id @default(cuid())
+  title              String
+  description        String
+  date               DateTime
+  location           String
+  posterUrl          String?
+  clubId             String
+  club               Club                @relation(fields: [clubId], references: [id])
+  registrations      Registration[]
+  eventRegistrations EventRegistration[]
+  gallery            Gallery[]
 }
 
 model Registration {
@@ -64,14 +67,51 @@ model Registration {
 }
 
 model Gallery {
-  id      String @id @default(cuid())
+  id       String @id @default(cuid())
   imageUrl String
-  eventId String
-  event   Event @relation(fields: [eventId], references: [id])
+  eventId  String
+  event    Event  @relation(fields: [eventId], references: [id])
+}
+
+model EventRegistration {
+  id          String             @id @default(cuid())
+  userId      String
+  eventId     String
+  status      RegistrationStatus @default(REGISTERED)
+  checkedInAt DateTime?
+  createdAt   DateTime           @default(now())
+
+  user  User  @relation(fields: [userId], references: [id])
+  event Event @relation(fields: [eventId], references: [id])
+
+  @@unique([userId, eventId])
+}
+
+model Notification {
+  id        String           @id @default(cuid())
+  userId    String
+  type      NotificationType
+  payload   Json
+  read      Boolean          @default(false)
+  createdAt DateTime         @default(now())
+
+  user User @relation(fields: [userId], references: [id])
 }
 
 enum Role {
   STUDENT
   COORDINATOR
   ADMIN
+}
+
+enum RegistrationStatus {
+  REGISTERED
+  CANCELLED
+  ATTENDED
+}
+
+enum NotificationType {
+  EVENT_REMINDER
+  UPDATE
+  ANNOUNCEMENT
 }

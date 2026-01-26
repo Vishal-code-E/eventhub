@@ -127,7 +127,7 @@ export default function ClubsPage() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
+          <h1 className="text-5xl font-bold mb-4 bg-linear-to-r from-primary to-purple-600 bg-clip-text text-transparent">
             Explore Our Clubs
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -180,7 +180,7 @@ export default function ClubsPage() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
         >
-          <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-xl p-6 border border-blue-500/20">
+          <div className="bg-linear-to-br from-blue-500/10 to-cyan-500/10 rounded-xl p-6 border border-blue-500/20">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-muted-foreground mb-1">Total Clubs</p>
@@ -189,7 +189,7 @@ export default function ClubsPage() {
               <Users className="w-12 h-12 text-blue-500 opacity-50" />
             </div>
           </div>
-          <div className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-xl p-6 border border-purple-500/20">
+          <div className="bg-linear-to-br from-purple-500/10 to-pink-500/10 rounded-xl p-6 border border-purple-500/20">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-muted-foreground mb-1">Total Members</p>
@@ -198,7 +198,7 @@ export default function ClubsPage() {
               <Users className="w-12 h-12 text-purple-500 opacity-50" />
             </div>
           </div>
-          <div className="bg-gradient-to-br from-green-500/10 to-teal-500/10 rounded-xl p-6 border border-green-500/20">
+          <div className="bg-linear-to-br from-green-500/10 to-teal-500/10 rounded-xl p-6 border border-green-500/20">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-muted-foreground mb-1">Total Events</p>
@@ -222,7 +222,7 @@ export default function ClubsPage() {
                 className="group relative bg-card rounded-xl overflow-hidden border border-border hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
               >
                 {/* Gradient Header */}
-                <div className={`h-32 bg-gradient-to-r ${club.color} relative`}>
+                <div className={`h-32 bg-linear-to-r ${club.color} relative`}>
                   <div className="absolute inset-0 bg-black/20" />
                   <div className="absolute bottom-4 left-4 flex items-center gap-3">
                     <div className="bg-white/20 backdrop-blur-sm p-3 rounded-full">
@@ -262,14 +262,14 @@ export default function ClubsPage() {
                     <p className="text-sm text-muted-foreground mb-3">
                       President: <span className="font-medium text-foreground">{club.president}</span>
                     </p>
-                    <button className={`w-full py-2 px-4 rounded-lg font-medium bg-gradient-to-r ${club.color} text-white hover:opacity-90 transition-opacity`}>
+                    <button className={`w-full py-2 px-4 rounded-lg font-medium bg-linear-to-r ${club.color} text-white hover:opacity-90 transition-opacity`}>
                       Join Club
                     </button>
                   </div>
                 </div>
 
                 {/* Hover Effect */}
-                <div className={`absolute inset-0 bg-gradient-to-r ${club.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 pointer-events-none`} />
+                <div className={`absolute inset-0 bg-linear-to-r ${club.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 pointer-events-none`} />
               </motion.div>
             );
           })}
