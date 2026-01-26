@@ -1,6 +1,7 @@
 'use client';
 
 import StaggeredMenu, { StaggeredMenuItem } from '@/components/StaggeredMenu';
+import NotificationBell from '@/components/NotificationBell';
 import { useSession, signOut } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 
@@ -66,16 +67,25 @@ export default function Navbar() {
   ];
 
   return (
-    <StaggeredMenu
-      position="right"
-      items={menuItems}
-      socialItems={socialItems}
-      displaySocials={true}
-      displayItemNumbering={true}
-      logoUrl="/logomain2.png"
-      isFixed={true}
-      accentColor="#5227FF"
-      colors={['#B19EEF', '#5227FF']}
-    />
+    <>
+      <StaggeredMenu
+        position="right"
+        items={menuItems}
+        socialItems={socialItems}
+        displaySocials={true}
+        displayItemNumbering={true}
+        logoUrl="/logomain2.png"
+        isFixed={true}
+        accentColor="#5227FF"
+        colors={['#B19EEF', '#5227FF']}
+      />
+      
+      {/* Notification Bell - Only show for authenticated users */}
+      {status === 'authenticated' && (
+        <div className="fixed top-6 right-20 z-40">
+          <NotificationBell />
+        </div>
+      )}
+    </>
   );
 }

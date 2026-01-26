@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { PrismaClient } from '@prisma/client';
+import { sendRegistrationEmail } from '@/lib/email';
 
 const prisma = new PrismaClient();
 
@@ -106,12 +107,16 @@ export async function POST(
       },
     });
 
-    // 7. Send confirmation email (optional - basic implementation)
-    // In production, use a proper email service like SendGrid, Resend, etc.
+    // 7. Send confirmation email
     try {
-      // Email sending would go here
-      // For now, we'll just log it
-      console.log(`Email confirmation sent to ${user.email} for event: ${event.title}`);
+      await sendRegistrationEmail({
+        userEmail: user.email,
+        userName: user.firstName || user.name || 'there',
+        eventTitle: event.title,
+        eventDate: event.date,
+        eventLocation: event.location,
+        clubName: event.club.name,
+      });
     } catch (emailError) {
       console.error('Failed to send confirmation email:', emailError);
       // Don't fail the registration if email fails
