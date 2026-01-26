@@ -93,7 +93,7 @@ export default function RegistrationCard({
     >
       <div className="flex flex-col sm:flex-row">
         {/* Poster Thumbnail */}
-        <div className="relative w-full sm:w-48 h-48 sm:h-auto overflow-hidden bg-muted flex-shrink-0">
+        <div className="relative w-full sm:w-48 h-48 sm:h-auto overflow-hidden bg-muted shrink-0">
           {posterUrl ? (
             <img
               src={posterUrl}

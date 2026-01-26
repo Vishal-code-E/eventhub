@@ -1,3 +1,5 @@
+-- PostgreSQL Migration (Prisma)
+-- Note: This file uses PostgreSQL-specific syntax
 -- CreateEnum
 CREATE TYPE "public"."Role" AS ENUM ('STUDENT', 'COORDINATOR', 'ADMIN');
 
