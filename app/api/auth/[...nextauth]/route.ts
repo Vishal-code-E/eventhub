@@ -108,12 +108,41 @@ const authOptions: AuthOptions = {
 
     /**
      * JWT callback - adds user info to token
+     * This runs on every request, so we fetch fresh data from DB
      */
-    async jwt({ token, user }) {
+    async jwt({ token, user, trigger }) {
+      // On initial sign in, add user data to token
       if (user) {
         token.id = user.id;
         token.email = user.email;
+        token.isProfileComplete = user.isProfileComplete;
+        token.role = user.role;
       }
+
+      // On subsequent requests or when session is updated, refresh from DB
+      if (token.email && (trigger === 'update' || !token.isProfileComplete)) {
+        try {
+          const dbUser = await prisma.user.findUnique({
+            where: { email: token.email as string },
+            select: {
+              id: true,
+              email: true,
+              isProfileComplete: true,
+              role: true,
+            }
+          });
+
+          if (dbUser) {
+            token.id = dbUser.id;
+            token.email = dbUser.email;
+            token.isProfileComplete = dbUser.isProfileComplete;
+            token.role = dbUser.role;
+          }
+        } catch (error) {
+          console.error("Error refreshing token:", error);
+        }
+      }
+
       return token;
     },
   },
