@@ -1,12 +1,12 @@
 'use client';
 
-import StaggeredMenu from '@/components/StaggeredMenu';
+import StaggeredMenu, { StaggeredMenuItem } from '@/components/StaggeredMenu';
 import { useSession, signOut } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 
 export default function Navbar() {
   const { data: session, status } = useSession();
-  const [menuItems, setMenuItems] = useState([
+  const [menuItems, setMenuItems] = useState<StaggeredMenuItem[]>([
     { label: 'Home', ariaLabel: 'Go to home page', link: '/' },
     { label: 'Events', ariaLabel: 'View events', link: '/events' },
     { label: 'Clubs', ariaLabel: 'View clubs', link: '/clubs' },

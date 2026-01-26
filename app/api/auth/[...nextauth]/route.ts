@@ -28,7 +28,7 @@ function isCollegeEmail(email: string): boolean {
   return ALLOWED_DOMAINS.some(domain => email.toLowerCase().endsWith(`@${domain}`));
 }
 
-export const authOptions: AuthOptions = {
+const authOptions: AuthOptions = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID || "",
