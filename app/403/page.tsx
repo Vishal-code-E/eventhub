@@ -33,7 +33,7 @@ export default function ForbiddenPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="text-8xl font-bold bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent mb-4"
+          className="text-8xl font-bold bg-linear-to-r from-red-500 to-pink-500 bg-clip-text text-transparent mb-4"
         >
           403
         </motion.h1>
@@ -74,7 +74,7 @@ export default function ForbiddenPage() {
           </button>
           <button
             onClick={() => router.push('/')}
-            className="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-lg hover:opacity-90 transition-opacity"
+            className="flex items-center justify-center gap-2 px-6 py-3 bg-linear-to-r from-red-500 to-pink-500 text-white rounded-lg hover:opacity-90 transition-opacity"
           >
             <Home className="w-4 h-4" />
             Go Home
