@@ -3,22 +3,18 @@ import { redirect } from 'next/navigation';
 import { PrismaClient } from '@prisma/client';
 import Navbar from '@/components/Navbar';
 import RegistrationCard from './RegistrationCard';
-import { Calendar } from 'lucide-react';
+import { Calendar, Sparkles } from 'lucide-react';
+import { EmptyState } from '@/components/ui/empty-state';
+import { RegistrationCardSkeleton } from '@/components/ui/skeleton';
+import { Suspense } from 'react';
 
 const prisma = new PrismaClient();
 
 export const dynamic = 'force-dynamic';
 
-export default async function StudentDashboard() {
-  const session = await getServerSession();
-
-  if (!session || !session.user?.email) {
-    redirect('/login');
-  }
-
-  // Fetch user and their registrations
+async function RegistrationsList({ userId }: { userId: string }) {
   const user = await prisma.user.findUnique({
-    where: { email: session.user.email },
+    where: { id: userId },
     include: {
       eventRegistrations: {
         include: {
@@ -44,56 +40,94 @@ export default async function StudentDashboard() {
   }
 
   const registrations = user.eventRegistrations;
-  const hasRegistrations = registrations.length > 0;
+
+  if (registrations.length === 0) {
+    return (
+      <EmptyState
+        icon={Calendar}
+        title="No Registrations Yet"
+        description="You haven't registered for any events yet. Browse upcoming events and register to get started!"
+        action={{
+          label: "Explore Events",
+          href: "/events"
+        }}
+      />
+    );
+  }
+
+  return (
+    <div className="grid grid-cols-1 gap-4">
+      {registrations.map((registration) => (
+        <RegistrationCard
+          key={registration.id}
+          eventId={registration.event.id}
+          eventTitle={registration.event.title}
+          eventDate={registration.event.date}
+          eventLocation={registration.event.location}
+          posterUrl={registration.event.posterUrl}
+          clubName={registration.event.club.name}
+          status={registration.status}
+        />
+      ))}
+    </div>
+  );
+}
+
+function RegistrationsLoading() {
+  return (
+    <div className="grid grid-cols-1 gap-4">
+      {[1, 2, 3].map((i) => (
+        <RegistrationCardSkeleton key={i} />
+      ))}
+    </div>
+  );
+}
+
+export default async function StudentDashboard() {
+  const session = await getServerSession();
+
+  if (!session || !session.user?.email) {
+    redirect('/login');
+  }
+
+  const user = await prisma.user.findUnique({
+    where: { email: session.user.email },
+    select: {
+      id: true,
+      name: true,
+    },
+  });
+
+  if (!user) {
+    redirect('/login');
+  }
 
   return (
     <>
       <Navbar />
       
-      <main className="min-h-screen bg-background">
+      <main className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {/* Header */}
-          <div className="mb-8">
-            <h1 className="text-4xl font-bold mb-2">My Registrations</h1>
-            <p className="text-muted-foreground">
+          <div className="mb-10">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-4">
+              <Sparkles className="w-4 h-4" />
+              <span>Your Dashboard</span>
+            </div>
+            
+            <h1 className="text-4xl md:text-5xl font-bold mb-3 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+              My Registrations
+            </h1>
+            
+            <p className="text-lg text-muted-foreground">
               Manage your event registrations and track your attendance
             </p>
           </div>
 
-          {/* Registrations List */}
-          {hasRegistrations ? (
-            <div className="space-y-4">
-              {registrations.map((registration) => (
-                <RegistrationCard
-                  key={registration.id}
-                  eventId={registration.event.id}
-                  eventTitle={registration.event.title}
-                  eventDate={registration.event.date}
-                  eventLocation={registration.event.location}
-                  posterUrl={registration.event.posterUrl}
-                  clubName={registration.event.club.name}
-                  status={registration.status}
-                />
-              ))}
-            </div>
-          ) : (
-            // Empty State
-            <div className="flex flex-col items-center justify-center py-20 px-4">
-              <div className="w-24 h-24 rounded-full bg-muted flex items-center justify-center mb-6">
-                <Calendar className="w-12 h-12 text-muted-foreground" />
-              </div>
-              <h2 className="text-2xl font-bold mb-2">No registrations yet</h2>
-              <p className="text-muted-foreground text-center mb-6 max-w-md">
-                You haven&apos;t registered for any events yet. Browse upcoming events and register to get started!
-              </p>
-              <a
-                href="/events"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:opacity-90 transition-opacity"
-              >
-                Browse Events
-              </a>
-            </div>
-          )}
+          {/* Registrations List with Suspense */}
+          <Suspense fallback={<RegistrationsLoading />}>
+            <RegistrationsList userId={user.id} />
+          </Suspense>
         </div>
       </main>
     </>
