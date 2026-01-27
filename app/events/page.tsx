@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 import EventCard from '@/components/eventcard';
-import { Calendar, Sparkles } from 'lucide-react';
-import { EmptyState } from '@/components/ui/empty-state';
+import { Sparkles } from 'lucide-react';
+import { EventsEmptyState } from '@/components/EventsEmptyState';
 import { EventCardSkeleton } from '@/components/ui/skeleton';
 import { Suspense } from 'react';
 
@@ -27,8 +27,7 @@ async function EventsList() {
 
   if (events.length === 0) {
     return (
-      <EmptyState
-        icon={Calendar}
+      <EventsEmptyState
         title="No Events Yet"
         description="Exciting events are coming soon! Check back later to discover amazing experiences on campus."
         action={{

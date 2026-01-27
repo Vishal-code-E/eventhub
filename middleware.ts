@@ -12,7 +12,7 @@
  * 
  * Route Access:
  * - /student/*    → STUDENT only
- * - /club-lead/*  → CLUB_LEAD only  
+ * - /club-lead/*  → COORDINATOR only  
  * - /admin/*      → ADMIN only
  * - Public routes → Everyone
  */
@@ -43,7 +43,7 @@ const PUBLIC_ROUTES = [
  */
 const PROTECTED_ROUTES: Record<string, string[]> = {
   '/student': ['STUDENT'],
-  '/club-lead': ['CLUB_LEAD', 'COORDINATOR'], // COORDINATOR is alias for CLUB_LEAD in schema
+  '/club-lead': ['COORDINATOR'], // COORDINATOR role from schema
   '/admin': ['ADMIN'],
 };
 

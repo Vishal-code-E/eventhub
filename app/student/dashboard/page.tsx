@@ -3,8 +3,8 @@ import { redirect } from 'next/navigation';
 import { PrismaClient } from '@prisma/client';
 import Navbar from '@/components/Navbar';
 import RegistrationCard from './RegistrationCard';
-import { Calendar, Sparkles } from 'lucide-react';
-import { EmptyState } from '@/components/ui/empty-state';
+import { Sparkles } from 'lucide-react';
+import { EventsEmptyState } from '@/components/EventsEmptyState';
 import { RegistrationCardSkeleton } from '@/components/ui/skeleton';
 import { Suspense } from 'react';
 
@@ -43,8 +43,7 @@ async function RegistrationsList({ userId }: { userId: string }) {
 
   if (registrations.length === 0) {
     return (
-      <EmptyState
-        icon={Calendar}
+      <EventsEmptyState
         title="No Registrations Yet"
         description="You haven't registered for any events yet. Browse upcoming events and register to get started!"
         action={{

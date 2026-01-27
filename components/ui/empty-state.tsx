@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { LucideIcon } from 'lucide-react';
-import { ReactNode } from 'react';
 
 interface EmptyStateProps {
   icon: LucideIcon;

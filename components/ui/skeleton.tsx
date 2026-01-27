@@ -1,8 +1,6 @@
 import { cn } from "@/lib/utils";
 
-interface SkeletonProps extends React.HTMLAttributes<HTMLDivElement> {}
-
-export function Skeleton({ className, ...props }: SkeletonProps) {
+export function Skeleton({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
       className={cn(
@@ -18,7 +16,7 @@ export function EventCardSkeleton() {
   return (
     <div className="bg-card border border-border rounded-xl overflow-hidden">
       {/* Poster skeleton */}
-      <Skeleton className="aspect-[3/4] w-full" />
+      <Skeleton className="aspect-3/4 w-full" />
       
       {/* Content skeleton */}
       <div className="p-4 space-y-3">
@@ -72,7 +70,7 @@ export function EventDetailSkeleton() {
 export function RegistrationCardSkeleton() {
   return (
     <div className="flex items-center gap-4 p-4 bg-card border border-border rounded-lg">
-      <Skeleton className="w-32 h-32 rounded-lg flex-shrink-0" />
+      <Skeleton className="w-32 h-32 rounded-lg shrink-0" />
       
       <div className="flex-1 space-y-2">
         <Skeleton className="h-6 w-3/4" />
