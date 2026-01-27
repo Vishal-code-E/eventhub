@@ -1,12 +1,32 @@
 "use client";
 
-import DomeGallery from "@/components/DomeGallery";
+import dynamic from "next/dynamic";
 import { useEffect, useRef } from "react";
+import { useReducedMotion, useIsMobile } from "@/lib/motion";
+
+// Dynamically import heavy DomeGallery component with no SSR
+const DomeGallery = dynamic(() => import("@/components/DomeGallery"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-[600px] flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-black">
+      <div className="text-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
+        <p className="text-gray-400">Loading Gallery...</p>
+      </div>
+    </div>
+  ),
+});
 
 export default function GalleryPage() {
   const autoRotateRef = useRef<number | null>(null);
+  const prefersReducedMotion = useReducedMotion();
+  const isMobile = useIsMobile();
+  
+  const shouldAutoRotate = !prefersReducedMotion && !isMobile;
 
   useEffect(() => {
+    if (!shouldAutoRotate) return;
+    
     // Auto-rotate the dome gallery
     let rotation = 0;
     const animate = () => {
@@ -29,7 +49,7 @@ export default function GalleryPage() {
         cancelAnimationFrame(autoRotateRef.current);
       }
     };
-  }, []);
+  }, [shouldAutoRotate]);
 
   const galleryImages = [
     { src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800", alt: "Tech Event 1" },

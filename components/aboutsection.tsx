@@ -1,9 +1,25 @@
 "use client";
 
-import TiltedCard from "./TiltedCard";
+import dynamic from "next/dynamic";
+import { useReducedMotion, useIsMobile } from "@/lib/motion";
+
+// Dynamically import TiltedCard with no SSR for better performance
+const TiltedCard = dynamic(() => import("./TiltedCard"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-[350px] bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl animate-pulse" />
+  ),
+});
 
 
 export default function AboutSection() {
+  const prefersReducedMotion = useReducedMotion();
+  const isMobile = useIsMobile();
+  
+  // Reduce tilt effects on mobile or for reduced motion preference
+  const tiltAmplitude = prefersReducedMotion || isMobile ? 0 : 18;
+  const scaleAmount = prefersReducedMotion || isMobile ? 1 : 1.15;
+
   return (
     <section className="bg-black text-white py-16 px-6">
       <div className="max-w-6xl mx-auto text-center">
@@ -23,9 +39,9 @@ export default function AboutSection() {
             captionText="E-CELL REC"
             containerHeight="350px"
             imageHeight="350px"
-            scaleOnHover={1.15}
-            rotateAmplitude={18}
-            showTooltip={true}
+            scaleOnHover={scaleAmount}
+            rotateAmplitude={tiltAmplitude}
+            showTooltip={!isMobile}
             overlayContent={
               <div className="text-center p-4">
                 <p className="text-sm">Innovation • Entrepreneurship • Technology</p>
@@ -39,9 +55,9 @@ export default function AboutSection() {
             captionText="GDG"
             containerHeight="350px"
             imageHeight="350px"
-            scaleOnHover={1.12}
-            rotateAmplitude={16}
-            showTooltip={true}
+            scaleOnHover={scaleAmount}
+            rotateAmplitude={tiltAmplitude * 0.9}
+            showTooltip={!isMobile}
             overlayContent={
               <div className="text-center p-4">
                 <p className="text-sm">Google Developer Group</p>
