@@ -4,6 +4,7 @@ import { Sparkles } from 'lucide-react';
 import { EventsEmptyState } from '@/components/EventsEmptyState';
 import { EventCardSkeleton } from '@/components/ui/skeleton';
 import { Suspense } from 'react';
+import { getServerSession } from 'next-auth';
 
 const prisma = new PrismaClient();
 
@@ -11,6 +12,10 @@ const prisma = new PrismaClient();
 export const dynamic = 'force-dynamic';
 
 async function EventsList() {
+  // Get user session to check role
+  const session = await getServerSession();
+  const isClubLead = session?.user?.role === 'COORDINATOR';
+
   // Fetch all events with club information
   const events = await prisma.event.findMany({
     include: {
@@ -29,11 +34,22 @@ async function EventsList() {
     return (
       <EventsEmptyState
         title="No Events Yet"
-        description="Exciting events are coming soon! Check back later to discover amazing experiences on campus."
-        action={{
-          label: "Go to Dashboard",
-          href: "/student/dashboard"
-        }}
+        description={
+          isClubLead
+            ? "You haven't created any events yet. Start by creating your first event and share it with your community!"
+            : "Exciting events are coming soon! Check back later to discover amazing experiences on campus."
+        }
+        action={
+          isClubLead
+            ? {
+                label: "Create Your First Event",
+                href: "/club-lead/events/new"
+              }
+            : {
+                label: "Go to Dashboard",
+                href: "/student/dashboard"
+              }
+        }
       />
     );
   }
