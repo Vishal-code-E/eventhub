@@ -73,7 +73,7 @@ Event Hub has been transformed into a **premium, production-ready** application 
 ```tsx
 const Antigravity = dynamic(() => import("./Antigravity"), { 
   ssr: false,
-  loading: () => <div className="bg-gradient-to-br from-black..." />
+  loading: () => <div className="bg-linear-to-br from-black..." />
 });
 ```
 - Conditionally renders based on `useReducedMotion()` and `useIsMobile()`

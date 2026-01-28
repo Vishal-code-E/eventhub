@@ -39,12 +39,12 @@ export default function Hero() {
             particleShape="capsule"
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-br from-black via-gray-900 to-black" />
+          <div className="w-full h-full bg-linear-to-br from-black via-gray-900 to-black" />
         )}
       </div>
       
       <section className="relative z-10 text-white text-center px-6 py-16 pointer-events-none">
-        <h1 className="text-5xl md:text-7xl font-extrabold mb-6 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
+        <h1 className="text-5xl md:text-7xl font-extrabold mb-6 bg-linear-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
           Welcome to <span className="text-gray-300">EventHub</span>
         </h1>
         

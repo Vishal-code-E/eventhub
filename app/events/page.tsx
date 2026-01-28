@@ -67,7 +67,7 @@ function EventsLoading() {
 
 export default async function EventsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20 py-20 px-4">
+    <div className="min-h-screen bg-linear-to-br from-background via-background to-muted/20 py-20 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12 space-y-4">
@@ -76,7 +76,7 @@ export default async function EventsPage() {
             <span>Discover Events</span>
           </div>
           
-          <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-foreground via-foreground to-foreground/70 bg-clip-text text-transparent">
+          <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-linear-to-r from-foreground via-foreground to-foreground/70 bg-clip-text text-transparent">
             Upcoming Events
           </h1>
           

@@ -30,7 +30,7 @@ export function EmptyState({ icon: Icon, title, description, action, className =
         className="relative mb-6"
       >
         <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full" />
-        <div className="relative w-20 h-20 rounded-2xl bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center border border-border/50">
+        <div className="relative w-20 h-20 rounded-2xl bg-linear-to-br from-muted to-muted/50 flex items-center justify-center border border-border/50">
           <Icon className="w-10 h-10 text-muted-foreground" />
         </div>
       </motion.div>

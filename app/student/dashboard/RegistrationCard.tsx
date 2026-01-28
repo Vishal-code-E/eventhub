@@ -97,11 +97,11 @@ export default function RegistrationCard({
       whileHover={!prefersReducedMotion ? { y: -4 } : undefined}
       transition={{ duration: 0.3 }}
       onClick={() => router.push(`/events/${eventId}`)}
-      className="group cursor-pointer bg-gradient-to-br from-card to-card/50 backdrop-blur-sm border border-border/50 rounded-2xl overflow-hidden hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500"
+      className="group cursor-pointer bg-linear-to-br from-card to-card/50 backdrop-blur-sm border border-border/50 rounded-2xl overflow-hidden hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500"
     >
       <div className="flex flex-col sm:flex-row">
         {/* Poster Thumbnail */}
-        <div className="relative w-full sm:w-56 h-56 sm:h-auto overflow-hidden bg-gradient-to-br from-muted/80 to-muted/40 shrink-0">
+        <div className="relative w-full sm:w-56 h-56 sm:h-auto overflow-hidden bg-linear-to-br from-muted/80 to-muted/40 shrink-0">
           {posterUrl ? (
             <>
               <motion.img
@@ -111,10 +111,10 @@ export default function RegistrationCard({
                 whileHover={!prefersReducedMotion ? { scale: 1.05 } : undefined}
                 transition={{ duration: 0.5 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-60" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent opacity-60" />
             </>
           ) : (
-            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 via-purple-500/10 to-primary/5">
+            <div className="w-full h-full flex items-center justify-center bg-linear-to-br from-primary/10 via-purple-500/10 to-primary/5">
               <Calendar className="w-16 h-16 text-muted-foreground/30" />
             </div>
           )}

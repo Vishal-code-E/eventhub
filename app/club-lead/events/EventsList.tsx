@@ -47,10 +47,10 @@ export function EventsList({ events }: EventsListProps) {
           <Link
             key={event.id}
             href={`/events/${event.id}`}
-            className="group bg-gradient-to-br from-card to-card/50 backdrop-blur-sm border border-border/50 rounded-2xl overflow-hidden hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 cursor-pointer"
+            className="group bg-linear-to-br from-card to-card/50 backdrop-blur-sm border border-border/50 rounded-2xl overflow-hidden hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 cursor-pointer"
           >
             {/* Poster */}
-            <div className="relative aspect-3/4 overflow-hidden bg-gradient-to-br from-muted/80 to-muted/40">
+            <div className="relative aspect-3/4 overflow-hidden bg-linear-to-br from-muted/80 to-muted/40">
               {event.posterUrl ? (
                 <>
                   <img
@@ -58,10 +58,10 @@ export function EventsList({ events }: EventsListProps) {
                     alt={event.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-60" />
                 </>
               ) : (
-                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 via-purple-500/10 to-primary/5">
+                <div className="w-full h-full flex items-center justify-center bg-linear-to-br from-primary/10 via-purple-500/10 to-primary/5">
                   <Calendar className="w-20 h-20 text-muted-foreground/30" />
                 </div>
               )}

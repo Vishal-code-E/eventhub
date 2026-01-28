@@ -89,7 +89,7 @@ export default function EventDetailClient({ event, isAuthenticated, isRegistered
   const shouldAnimate = !prefersReducedMotion && !isMobile;
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-gradient-to-br from-background via-background to-muted/10">
+    <div ref={containerRef} className="min-h-screen bg-linear-to-br from-background via-background to-muted/10">
       {/* Hero Section with Parallax */}
       <div className="relative h-[70vh] min-h-[500px] overflow-hidden">
         {/* Poster with parallax effect */}
@@ -104,15 +104,15 @@ export default function EventDetailClient({ event, isAuthenticated, isRegistered
               className="w-full h-full object-cover scale-110"
             />
           ) : (
-            <div className="w-full h-full bg-gradient-to-br from-primary/30 via-purple-500/30 to-primary/20 flex items-center justify-center">
+            <div className="w-full h-full bg-linear-to-br from-primary/30 via-purple-500/30 to-primary/20 flex items-center justify-center">
               <Calendar className="w-32 h-32 text-muted-foreground/30" />
             </div>
           )}
         </motion.div>
         
         {/* Multi-layer gradient overlay for depth */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/40 via-transparent to-background/40" />
+        <div className="absolute inset-0 bg-linear-to-t from-background via-background/80 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-r from-background/40 via-transparent to-background/40" />
 
         {/* Content overlay */}
         <div className="absolute bottom-0 left-0 right-0 pb-12">
@@ -163,8 +163,8 @@ export default function EventDetailClient({ event, isAuthenticated, isRegistered
             {/* Quick Info Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Date & Time Card */}
-              <div className="flex items-start gap-4 p-6 bg-gradient-to-br from-card to-card/50 backdrop-blur-sm border border-border/50 rounded-2xl hover:border-primary/30 transition-colors duration-300">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <div className="flex items-start gap-4 p-6 bg-linear-to-br from-card to-card/50 backdrop-blur-sm border border-border/50 rounded-2xl hover:border-primary/30 transition-colors duration-300">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
                   <Calendar className="w-6 h-6 text-primary" />
                 </div>
                 <div>
@@ -178,8 +178,8 @@ export default function EventDetailClient({ event, isAuthenticated, isRegistered
               </div>
 
               {/* Location Card */}
-              <div className="flex items-start gap-4 p-6 bg-gradient-to-br from-card to-card/50 backdrop-blur-sm border border-border/50 rounded-2xl hover:border-primary/30 transition-colors duration-300">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <div className="flex items-start gap-4 p-6 bg-linear-to-br from-card to-card/50 backdrop-blur-sm border border-border/50 rounded-2xl hover:border-primary/30 transition-colors duration-300">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
                   <MapPin className="w-6 h-6 text-primary" />
                 </div>
                 <div>
@@ -191,7 +191,7 @@ export default function EventDetailClient({ event, isAuthenticated, isRegistered
 
             {/* Description */}
             {event.description && (
-              <div className="space-y-4 p-6 bg-gradient-to-br from-card to-card/50 backdrop-blur-sm border border-border/50 rounded-2xl">
+              <div className="space-y-4 p-6 bg-linear-to-br from-card to-card/50 backdrop-blur-sm border border-border/50 rounded-2xl">
                 <h3 className="text-2xl font-bold">About This Event</h3>
                 <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
                   {event.description}
@@ -209,7 +209,7 @@ export default function EventDetailClient({ event, isAuthenticated, isRegistered
           >
             <div className="sticky top-24 space-y-6">
               {/* Registration Card */}
-              <div className="bg-gradient-to-br from-card via-card to-card/80 backdrop-blur-sm border border-border/50 rounded-2xl p-6 space-y-6 shadow-xl shadow-black/5">
+              <div className="bg-linear-to-br from-card via-card to-card/80 backdrop-blur-sm border border-border/50 rounded-2xl p-6 space-y-6 shadow-xl shadow-black/5">
                 <h3 className="text-xl font-bold">Registration</h3>
                 
                 {error && (
@@ -227,7 +227,7 @@ export default function EventDetailClient({ event, isAuthenticated, isRegistered
                     initial={{ scale: 0.95 }}
                     animate={{ scale: 1 }}
                     disabled
-                    className="w-full py-4 px-4 bg-gradient-to-r from-green-500/20 to-green-600/20 border border-green-500/30 text-green-500 rounded-xl font-semibold flex items-center justify-center gap-2 cursor-not-allowed"
+                    className="w-full py-4 px-4 bg-linear-to-r from-green-500/20 to-green-600/20 border border-green-500/30 text-green-500 rounded-xl font-semibold flex items-center justify-center gap-3 cursor-default"
                   >
                     <CheckCircle className="w-5 h-5" />
                     You're Registered!
@@ -238,7 +238,7 @@ export default function EventDetailClient({ event, isAuthenticated, isRegistered
                     disabled={isLoading}
                     whileHover={shouldAnimate ? { scale: 1.02 } : undefined}
                     whileTap={shouldAnimate ? { scale: 0.98 } : undefined}
-                    className="w-full py-4 px-4 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground rounded-xl font-semibold hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="w-full py-4 px-4 bg-linear-to-r from-primary to-primary/80 text-primary-foreground rounded-xl font-semibold hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
                     {isLoading ? (
                       <>
@@ -263,7 +263,7 @@ export default function EventDetailClient({ event, isAuthenticated, isRegistered
               </div>
 
               {/* Club Info Card */}
-              <div className="bg-gradient-to-br from-card via-card to-card/80 backdrop-blur-sm border border-border/50 rounded-2xl p-6 space-y-4 shadow-xl shadow-black/5">
+              <div className="bg-linear-to-br from-card via-card to-card/80 backdrop-blur-sm border border-border/50 rounded-2xl p-6 space-y-4 shadow-xl shadow-black/5">
                 <h4 className="font-semibold text-sm text-muted-foreground">Organized By</h4>
                 <div className="flex items-center gap-4">
                   {event.clubLogoUrl ? (
@@ -273,7 +273,7 @@ export default function EventDetailClient({ event, isAuthenticated, isRegistered
                       className="w-14 h-14 rounded-full object-cover border-2 border-primary/20"
                     />
                   ) : (
-                    <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary/20 to-purple-500/20 flex items-center justify-center border-2 border-primary/20">
+                    <div className="w-14 h-14 rounded-full bg-linear-to-br from-primary/20 to-purple-500/20 flex items-center justify-center border-2 border-primary/20">
                       <Users className="w-7 h-7 text-primary" />
                     </div>
                   )}

@@ -50,7 +50,7 @@ export default async function ClubLeadEventsPage() {
     <>
       <Navbar />
       
-      <main className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <main className="min-h-screen bg-linear-to-br from-background via-background to-muted/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {/* Header */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-10">
@@ -60,7 +60,7 @@ export default async function ClubLeadEventsPage() {
                 <span>Club Leader Dashboard</span>
               </div>
               
-              <h1 className="text-4xl md:text-5xl font-bold mb-3 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+              <h1 className="text-4xl md:text-5xl font-bold mb-3 bg-linear-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
                 My Events
               </h1>
               
@@ -72,7 +72,7 @@ export default async function ClubLeadEventsPage() {
             {/* Create Event CTA */}
             <Link
               href="/club-lead/events/new"
-              className="inline-flex items-center gap-2 px-6 py-3.5 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground rounded-xl font-semibold hover:shadow-lg hover:shadow-primary/25 transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 py-3.5 bg-linear-to-r from-primary to-primary/80 text-primary-foreground rounded-xl font-semibold hover:shadow-lg hover:shadow-primary/25 transition-all duration-300"
             >
               <Plus className="w-5 h-5" />
               Create Event

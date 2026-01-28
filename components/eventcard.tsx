@@ -36,7 +36,7 @@ export default function EventCard({ id, title, date, location, posterUrl, clubNa
       className="group cursor-pointer bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl overflow-hidden hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500"
     >
       {/* Poster Image - Poster-First Design */}
-      <div className="relative aspect-[3/4] overflow-hidden bg-gradient-to-br from-muted/80 to-muted/40">
+      <div className="relative aspect-3/4 overflow-hidden bg-linear-to-br from-muted/80 to-muted/40">
         {posterUrl ? (
           <>
             <motion.img
@@ -48,10 +48,10 @@ export default function EventCard({ id, title, date, location, posterUrl, clubNa
             />
             
             {/* Gradient overlay for text readability */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
           </>
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 via-purple-500/10 to-primary/5">
+          <div className="w-full h-full flex items-center justify-center bg-linear-to-br from-primary/10 via-purple-500/10 to-primary/5">
             <Calendar className="w-20 h-20 text-muted-foreground/30" />
           </div>
         )}
@@ -61,7 +61,7 @@ export default function EventCard({ id, title, date, location, posterUrl, clubNa
           initial={{ opacity: 0 }}
           whileHover={shouldAnimate ? { opacity: 1 } : undefined}
           transition={{ duration: 0.3 }}
-          className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-500"
+          className="absolute inset-0 bg-linear-to-t from-black/90 via-black/60 to-black/30 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-500"
         >
           <motion.div
             initial={{ y: 10, opacity: 0 }}
@@ -78,7 +78,7 @@ export default function EventCard({ id, title, date, location, posterUrl, clubNa
         </motion.div>
 
         {/* Minimal info overlay on poster */}
-        <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent">
+        <div className="absolute bottom-0 left-0 right-0 p-4 bg-linear-to-t from-black/60 to-transparent">
           <div className="flex items-center gap-2 text-white/90 text-xs">
             <Calendar className="w-3.5 h-3.5" />
             <span className="font-medium">{formattedDate}</span>
@@ -95,7 +95,7 @@ export default function EventCard({ id, title, date, location, posterUrl, clubNa
 
         {/* Location */}
         <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-          <MapPin className="w-3.5 h-3.5 flex-shrink-0" />
+          <MapPin className="w-3.5 h-3.5 shrink-0" />
           <span className="line-clamp-1">{location}</span>
         </div>
 

@@ -140,7 +140,7 @@ const HeavyComponent = dynamic(() => import('./HeavyComponent'), {
   ssr: false, // Disable server-side rendering
   loading: () => (
     // Show while loading
-    <div className="w-full h-full bg-gradient-to-br from-muted to-muted/50 animate-pulse" />
+    <div className="w-full h-full bg-linear-to-br from-muted to-muted/50 animate-pulse" />
   )
 });
 
