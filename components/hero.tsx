@@ -7,7 +7,7 @@ import { useReducedMotion, useIsMobile } from "@/lib/motion";
 const Antigravity = dynamic(() => import("./Antigravity"), { 
   ssr: false,
   loading: () => (
-    <div className="w-full h-full bg-gradient-to-br from-black via-gray-900 to-black" />
+    <div className="w-full h-full bg-linear-to-br from-black via-gray-900 to-black" />
   ),
 });
 

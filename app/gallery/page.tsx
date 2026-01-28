@@ -8,7 +8,7 @@ import { useReducedMotion, useIsMobile } from "@/lib/motion";
 const DomeGallery = dynamic(() => import("@/components/DomeGallery"), {
   ssr: false,
   loading: () => (
-    <div className="w-full h-[600px] flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-black">
+    <div className="w-full h-[600px] flex items-center justify-center bg-linear-to-br from-black via-gray-900 to-black">
       <div className="text-center">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
         <p className="text-gray-400">Loading Gallery...</p>
