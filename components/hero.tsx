@@ -1,17 +1,34 @@
 "use client";
 
+import { SparklesCore } from "@/components/ui/sparkles";
+
 export default function Hero() {
   return (
     <div className="relative flex flex-col items-center justify-center w-full h-screen overflow-hidden bg-black">
       
       <section className="relative z-10 text-white text-center px-6 py-16">
-        <h1 className="font-aalto text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-wider bg-linear-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
+        <h1 className="font-aalto text-5xl md:text-7xl lg:text-8xl font-bold mb-8 tracking-wider text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.5)]">
           EVENTHUB REC
         </h1>
         
-        <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
-          Discover, register, and celebrate every event in our college.
-        </p>
+        {/* Glowing divider line */}
+        <div className="w-full max-w-4xl mx-auto mb-8">
+          <div className="h-px bg-gradient-to-r from-transparent via-white to-transparent opacity-50 shadow-[0_0_20px_rgba(255,255,255,0.5)]"></div>
+        </div>
+        
+        {/* Sparkles effect below divider */}
+        <div className="w-full max-w-4xl mx-auto h-40 relative">
+          <SparklesCore
+            id="hero-sparkles"
+            background="transparent"
+            minSize={0.4}
+            maxSize={1.4}
+            particleDensity={200}
+            className="w-full h-full"
+            particleColor="#FFFFFF"
+            speed={0.5}
+          />
+        </div>
       </section>
     </div>
   );
