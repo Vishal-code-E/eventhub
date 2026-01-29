@@ -3,8 +3,6 @@
 export default function Hero() {
   return (
     <div className="relative flex flex-col items-center justify-center w-full h-screen overflow-hidden bg-black">
-      {/* Simple gradient background */}
-      <div className="absolute inset-0 z-0 w-full h-full bg-linear-to-br from-black via-gray-900 to-black" />
       
       <section className="relative z-10 text-white text-center px-6 py-16">
         <h1 className="font-aalto text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-wider bg-linear-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">

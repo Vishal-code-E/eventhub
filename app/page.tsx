@@ -5,9 +5,9 @@ import { Footer } from "@/components/footer";
 
 export default function HomePage() {
   return (
-    <main>
+    <main className="bg-black">
       {/* Hero section */}
-      <div className="w-full h-screen flex items-center justify-center text-white">
+      <div className="w-full h-screen flex items-center justify-center text-white bg-black">
         <Hero />
       </div>
       {/* Logo marquee section */}
