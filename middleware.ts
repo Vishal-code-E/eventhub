@@ -30,7 +30,6 @@ const PUBLIC_ROUTES = [
   '/events',
   '/clubs',
   '/signup',
-  '/login',
   '/about',
   '/contact',
   '/gallery',

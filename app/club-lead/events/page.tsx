@@ -15,7 +15,7 @@ export default async function ClubLeadEventsPage() {
   const session = await getServerSession();
 
   if (!session || !session.user?.email) {
-    redirect('/login');
+    redirect('/signup');
   }
 
   // Fetch club lead user with their club

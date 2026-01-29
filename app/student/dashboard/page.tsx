@@ -36,7 +36,7 @@ async function RegistrationsList({ userId }: { userId: string }) {
   });
 
   if (!user) {
-    redirect('/login');
+    redirect('/signup');
   }
 
   const registrations = user.eventRegistrations;
@@ -86,7 +86,7 @@ export default async function StudentDashboard() {
   const session = await getServerSession();
 
   if (!session || !session.user?.email) {
-    redirect('/login');
+    redirect('/signup');
   }
 
   const user = await prisma.user.findUnique({
@@ -98,7 +98,7 @@ export default async function StudentDashboard() {
   });
 
   if (!user) {
-    redirect('/login');
+    redirect('/signup');
   }
 
   return (

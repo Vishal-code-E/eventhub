@@ -14,7 +14,7 @@ export default function Navbar() {
     { label: 'Gallery', ariaLabel: 'View gallery', link: '/gallery' },
     { label: 'About', ariaLabel: 'About us', link: '/about' },
     { label: 'Contact', ariaLabel: 'Contact us', link: '/contact' },
-    { label: 'Login', ariaLabel: 'Login to your account', link: '/login' },
+    { label: 'Login', ariaLabel: 'Login to your account', link: '/signup' },
   ]);
 
   useEffect(() => {
