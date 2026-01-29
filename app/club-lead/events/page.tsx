@@ -5,7 +5,6 @@ import Navbar from '@/components/Navbar';
 import Link from 'next/link';
 import { Plus, Sparkles } from 'lucide-react';
 import { EventsList } from './EventsList';
-import { AntigravityBackground } from '@/components/AntigravityBackground';
 
 const prisma = new PrismaClient();
 
@@ -51,12 +50,9 @@ export default async function ClubLeadEventsPage() {
     <>
       <Navbar />
       
-      <main className="relative min-h-screen overflow-hidden">
-        {/* Antigravity Background */}
-        <AntigravityBackground />
-        
+      <main className="min-h-screen bg-linear-to-br from-background via-background to-muted/20">
         {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {/* Header */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-10">
             <div>
