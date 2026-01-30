@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aliimam/logos": "^0.2.3",
     "@prisma/client": "^6.14.0",
     "@react-three/fiber": "^9.5.0",
     "@supabase/supabase-js": "^2.55.0",
