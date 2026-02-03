@@ -261,8 +261,8 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
       gsap.set(icon, { rotate: 0, transformOrigin: '50% 50%' });
       spinTweenRef.current = gsap
         .timeline({ defaults: { ease: 'power4.out' } })
-        .to(h, { rotate: 45, y: 5, duration: 0.4 }, 0)
-        .to(v, { rotate: -45, y: -5, duration: 0.4 }, 0)
+        .to(h, { rotate: 45, y: 0, duration: 0.4 }, 0)
+        .to(v, { rotate: -45, y: 0, duration: 0.4 }, 0)
         .to(middle, { opacity: 0, duration: 0.2 }, 0);
     } else {
       // X to Hamburger animation
@@ -428,11 +428,11 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
           </div>
 
           <div className="flex items-center gap-4 pointer-events-auto">
-            {/* Menu Button */}
+            {/* Menu Button - Hamburger Icon */}
             <button
               ref={toggleBtnRef}
-              className={`sm-toggle relative inline-flex items-center gap-2 bg-transparent border-0 cursor-pointer font-medium text-sm leading-none overflow-visible ${
-                open ? 'text-black' : 'text-[#e9e9ef]'
+              className={`sm-toggle group relative inline-flex items-center justify-center w-11 h-11 bg-transparent border-0 cursor-pointer overflow-visible transition-all duration-200 hover:bg-white/5 rounded-md ${
+                open ? 'text-black' : 'text-white'
               }`}
               aria-label={open ? 'Close menu' : 'Open menu'}
               aria-expanded={open}
@@ -440,34 +440,20 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
               onClick={toggleMenu}
               type="button"
             >
-              <span
-                ref={textWrapRef}
-                className="sm-toggle-textWrap relative inline-block h-[1em] overflow-hidden whitespace-nowrap w-(--sm-toggle-width,auto) min-w-(--sm-toggle-width,auto)"
-                aria-hidden="true"
-              >
-                <span ref={textInnerRef} className="sm-toggle-textInner flex flex-col leading-none">
-                  {textLines.map((l, i) => (
-                    <span className="sm-toggle-line block h-[1em] leading-none" key={i}>
-                      {l}
-                    </span>
-                  ))}
-                </span>
-              </span>
-
-              {/* Hamburger Icon */}
+              {/* Hamburger Icon - Three Clean Lines */}
               <span
                 ref={iconRef}
-                className="sm-icon relative w-[18px] h-3.5 shrink-0 inline-flex flex-col items-center justify-center gap-[3px] will-change-transform"
+                className="sm-icon relative w-[28px] h-[18px] shrink-0 inline-flex flex-col items-stretch justify-between will-change-transform"
                 aria-hidden="true"
               >
                 <span
                   ref={plusHRef}
-                  className="sm-icon-line w-full h-0.5 bg-current rounded-[1px] transition-transform origin-center will-change-transform"
+                  className="sm-icon-line w-full h-[2.5px] bg-white rounded-full transition-all duration-300 origin-center will-change-transform"
                 />
-                <span className="sm-icon-line-middle w-full h-0.5 bg-current rounded-[1px] transition-opacity" />
+                <span className="sm-icon-line-middle w-full h-[2.5px] bg-white rounded-full transition-all duration-200" />
                 <span
                   ref={plusVRef}
-                  className="sm-icon-line w-full h-0.5 bg-current rounded-[1px] transition-transform origin-center will-change-transform"
+                  className="sm-icon-line w-full h-[2.5px] bg-white rounded-full transition-all duration-300 origin-center will-change-transform"
                 />
               </span>
             </button>
@@ -552,15 +538,18 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 .sm-scope .staggered-menu-header > * { pointer-events: auto; }
 .sm-scope .sm-logo { display: flex; align-items: center; user-select: none; }
 .sm-scope .sm-logo-img { display: block; height: 32px; width: auto; object-fit: contain; }
-.sm-scope .sm-toggle { position: relative; display: inline-flex; align-items: center; gap: 0.3rem; background: transparent; border: none; cursor: pointer; color: #e9e9ef; font-weight: 500; line-height: 1; overflow: visible; }
-.sm-scope .sm-toggle:focus-visible { outline: 2px solid #ffffffaa; outline-offset: 4px; border-radius: 4px; }
+.sm-scope .sm-toggle { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; background: transparent; border: none; cursor: pointer; color: white; font-weight: 500; line-height: 1; overflow: visible; transition: all 0.15s ease; border-radius: 6px; }
+.sm-scope .sm-toggle:hover { background: rgba(255, 255, 255, 0.05); }
+.sm-scope .sm-toggle:active { background: rgba(255, 255, 255, 0.1); }
+.sm-scope .sm-toggle:focus-visible { outline: 2px solid #ffffffaa; outline-offset: 3px; border-radius: 6px; }
 .sm-scope .sm-line:last-of-type { margin-top: 6px; }
 .sm-scope .sm-toggle-textWrap { position: relative; margin-right: 0.5em; display: inline-block; height: 1em; overflow: hidden; white-space: nowrap; width: var(--sm-toggle-width, auto); min-width: var(--sm-toggle-width, auto); }
 .sm-scope .sm-toggle-textInner { display: flex; flex-direction: column; line-height: 1; }
 .sm-scope .sm-toggle-line { display: block; height: 1em; line-height: 1; }
-.sm-scope .sm-icon { position: relative; width: 14px; height: 14px; flex: 0 0 14px; display: inline-flex; align-items: center; justify-content: center; will-change: transform; }
+.sm-scope .sm-icon { position: relative; width: 28px; height: 18px; flex: 0 0 28px; display: inline-flex; flex-direction: column; align-items: stretch; justify-content: space-between; will-change: transform; }
 .sm-scope .sm-panel-itemWrap { position: relative; overflow: hidden; line-height: 1; }
-.sm-scope .sm-icon-line { position: absolute; left: 50%; top: 50%; width: 100%; height: 2px; background: currentColor; border-radius: 2px; transform: translate(-50%, -50%); will-change: transform; }
+.sm-scope .sm-icon-line { width: 100%; height: 2.5px; background: white; border-radius: 9999px; will-change: transform; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+.sm-scope .sm-icon-line-middle { width: 100%; height: 2.5px; background: white; border-radius: 9999px; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
 .sm-scope .sm-line { display: none !important; }
 .sm-scope .staggered-menu-panel { position: absolute; top: 0; right: 0; width: clamp(260px, 38vw, 420px); height: 100%; background: white; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); display: flex; flex-direction: column; padding: 6em 2em 2em 2em; overflow-y: auto; z-index: 10; }
 .sm-scope [data-position='left'] .staggered-menu-panel { right: auto; left: 0; }

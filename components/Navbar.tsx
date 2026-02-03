@@ -76,7 +76,7 @@ export default function Navbar() {
       
       {/* Notification Bell - Only show for authenticated users */}
       {status === 'authenticated' && (
-        <div className="fixed top-6 right-20 z-40">
+        <div className="fixed top-6 right-24 z-40">
           <NotificationBell />
         </div>
       )}
