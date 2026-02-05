@@ -50,7 +50,7 @@ const EventCard = ({ event, isActive }: { event: Event; isActive: boolean }) => 
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
     >
       {/* Background Image */}
-      <div className="relative h-[400px] overflow-hidden">
+      <div className="relative h-[350px] md:h-[400px] overflow-hidden">
         {event.posterUrl ? (
           <img
             src={event.posterUrl}
@@ -59,7 +59,7 @@ const EventCard = ({ event, isActive }: { event: Event; isActive: boolean }) => 
           />
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-purple-600 via-blue-600 to-teal-600 flex items-center justify-center">
-            <Calendar className="w-16 h-16 text-white/60" />
+            <Calendar className="w-12 h-12 md:w-16 md:h-16 text-white/60" />
           </div>
         )}
         
@@ -67,15 +67,15 @@ const EventCard = ({ event, isActive }: { event: Event; isActive: boolean }) => 
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
         
         {/* Club Badge */}
-        <div className="absolute top-4 right-4 px-3 py-1 bg-black/60 backdrop-blur-sm rounded-full text-xs text-white font-medium">
+        <div className="absolute top-3 right-3 md:top-4 md:right-4 px-2 py-1 md:px-3 md:py-1 bg-black/60 backdrop-blur-sm rounded-full text-xs text-white font-medium">
           {event.club.name}
         </div>
       </div>
 
       {/* Content */}
-      <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+      <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 text-white">
         <motion.h3 
-          className="text-xl font-bold mb-2 line-clamp-2 leading-tight"
+          className="text-lg md:text-xl font-bold mb-2 line-clamp-2 leading-tight"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
@@ -84,7 +84,7 @@ const EventCard = ({ event, isActive }: { event: Event; isActive: boolean }) => 
         </motion.h3>
         
         <motion.p 
-          className="text-sm text-gray-300 mb-4 line-clamp-2"
+          className="text-sm text-gray-300 mb-3 md:mb-4 line-clamp-2"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
@@ -93,14 +93,14 @@ const EventCard = ({ event, isActive }: { event: Event; isActive: boolean }) => 
         </motion.p>
 
         {/* Event Details */}
-        <div className="flex flex-col gap-2 text-sm">
+        <div className="flex flex-col gap-2 text-xs md:text-sm">
           <motion.div 
             className="flex items-center gap-2 text-gray-300"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
           >
-            <Calendar className="w-4 h-4" />
+            <Calendar className="w-3 h-3 md:w-4 md:h-4" />
             <span>{formatDate(event.date)} at {formatTime(event.date)}</span>
           </motion.div>
           
@@ -110,23 +110,23 @@ const EventCard = ({ event, isActive }: { event: Event; isActive: boolean }) => 
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5 }}
           >
-            <MapPin className="w-4 h-4" />
-            <span>{event.location}</span>
+            <MapPin className="w-3 h-3 md:w-4 md:h-4" />
+            <span className="line-clamp-1">{event.location}</span>
           </motion.div>
         </div>
 
         {/* Action Button */}
         <motion.div
-          className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          className="mt-3 md:mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
           initial={{ y: 20 }}
           animate={{ y: 0 }}
           transition={{ delay: 0.6 }}
         >
           <Link
             href={`/events/id/${event.id}`}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white text-sm font-medium rounded-lg transition-all duration-300 shadow-lg hover:shadow-purple-500/25"
+            className="inline-flex items-center gap-2 px-3 py-2 md:px-4 md:py-2 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white text-xs md:text-sm font-medium rounded-lg transition-all duration-300 shadow-lg hover:shadow-purple-500/25"
           >
-            <Users className="w-4 h-4" />
+            <Users className="w-3 h-3 md:w-4 md:h-4" />
             View Event
           </Link>
         </motion.div>
@@ -233,41 +233,41 @@ export default function EventsCarousel({ events, className }: EventsCarouselProp
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-600/20 to-blue-600/20 border border-purple-500/30 text-purple-300 text-sm font-medium mb-6">
+          <div className="inline-flex items-center gap-2 px-3 py-2 md:px-4 md:py-2 rounded-full bg-gradient-to-r from-purple-600/20 to-blue-600/20 border border-purple-500/30 text-purple-300 text-sm font-medium mb-4 md:mb-6">
             <Calendar className="w-4 h-4" />
             <span>Discover Events</span>
           </div>
           
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
             Trending Events
           </h2>
           
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-gray-400 max-w-2xl mx-auto px-4">
             Swipe through the most exciting events happening on campus. Don't miss out on amazing experiences!
           </p>
         </motion.div>
 
         {/* Carousel Container */}
-        <div className="relative">
-          {/* Navigation Buttons */}
+        <div className="relative events-carousel-container">
+          {/* Navigation Buttons - Hidden on mobile */}
           {events.length > itemsToShow && (
             <>
               <button
                 onClick={prevSlide}
-                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-3 bg-black/80 backdrop-blur-sm border border-white/20 rounded-full text-white hover:bg-black/90 hover:border-purple-500/50 transition-all duration-300 shadow-xl hover:shadow-purple-500/25"
+                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-3 bg-black/80 backdrop-blur-sm border border-white/20 rounded-full text-white hover:bg-black/90 hover:border-purple-500/50 transition-all duration-300 shadow-xl hover:shadow-purple-500/25 hidden md:block"
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
               
               <button
                 onClick={nextSlide}
-                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-3 bg-black/80 backdrop-blur-sm border border-white/20 rounded-full text-white hover:bg-black/90 hover:border-purple-500/50 transition-all duration-300 shadow-xl hover:shadow-purple-500/25"
+                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-3 bg-black/80 backdrop-blur-sm border border-white/20 rounded-full text-white hover:bg-black/90 hover:border-purple-500/50 transition-all duration-300 shadow-xl hover:shadow-purple-500/25 hidden md:block"
               >
                 <ChevronRight className="w-6 h-6" />
               </button>
@@ -285,9 +285,9 @@ export default function EventsCarousel({ events, className }: EventsCarouselProp
             onMouseLeave={() => setIsAutoPlaying(true)}
           >
             <motion.div
-              className="flex gap-6"
+              className="flex gap-4 md:gap-6 carousel-wrapper"
               animate={{ 
-                x: `calc(-${currentIndex * (100 / itemsToShow)}% - ${currentIndex * 1.5}rem)` 
+                x: `calc(-${currentIndex * (100 / itemsToShow)}% - ${currentIndex * (itemsToShow === 1 ? 1 : itemsToShow === 2 ? 1 : 1.5)}rem)` 
               }}
               transition={{ 
                 type: "spring", 
@@ -299,8 +299,10 @@ export default function EventsCarousel({ events, className }: EventsCarouselProp
                 <div
                   key={event.id}
                   className={cn(
-                    "flex-shrink-0",
-                    `w-[calc(${100 / itemsToShow}%-1rem)]`
+                    "flex-shrink-0 carousel-item",
+                    itemsToShow === 1 ? "w-full" :
+                    itemsToShow === 2 ? "w-[calc(50%-0.75rem)]" :
+                    "w-[calc(33.333%-1rem)]"
                   )}
                 >
                   <EventCard 
