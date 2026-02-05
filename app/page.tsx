@@ -13,6 +13,11 @@ export const dynamic = 'force-dynamic';
 async function getEvents() {
   try {
     const events = await prisma.event.findMany({
+      where: {
+        date: {
+          gte: new Date(), // Only get events with date >= current date
+        },
+      },
       include: {
         club: {
           select: {
@@ -23,7 +28,7 @@ async function getEvents() {
       orderBy: {
         date: 'asc',
       },
-      take: 10, // Limit to 10 most recent events for carousel
+      take: 10, // Limit to 10 upcoming events for carousel
     });
     return events;
   } catch (error) {
