@@ -39,6 +39,8 @@ async function getEvents() {
 
 export default async function HomePage() {
   const events = await getEvents();
+  
+  console.log('🎉 Events fetched for homepage:', events.length);
 
   return (
     <main className="bg-black">
