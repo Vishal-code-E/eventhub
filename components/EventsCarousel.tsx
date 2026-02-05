@@ -138,11 +138,28 @@ const EventCard = ({ event, isActive }: { event: Event; isActive: boolean }) => 
 export default function EventsCarousel({ events, className }: EventsCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [itemsToShow, setItemsToShow] = useState(3);
   const touchStartX = useRef<number>(0);
   const touchEndX = useRef<number>(0);
   const carouselRef = useRef<HTMLDivElement>(null);
 
-  const itemsToShow = 3; // Show 3 items at once
+  // Responsive items to show
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setItemsToShow(1); // Mobile: 1 item
+      } else if (window.innerWidth < 1024) {
+        setItemsToShow(2); // Tablet: 2 items
+      } else {
+        setItemsToShow(3); // Desktop: 3 items
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const maxIndex = Math.max(0, events.length - itemsToShow);
 
   // Auto-play functionality
