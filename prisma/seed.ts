@@ -70,7 +70,6 @@ async function main() {
       date: new Date("2026-02-15T14:00:00.000Z"),
       location: "Main Auditorium, REC",
       clubId: ecell.id,
-      posterUrl: "/posters/startup-pitch.jpg"
     },
     {
       title: "Tech Hackathon 2026",
@@ -78,7 +77,6 @@ async function main() {
       date: new Date("2026-02-20T09:00:00.000Z"),
       location: "Computer Lab, Block A",
       clubId: techClub.id,
-      posterUrl: "/posters/hackathon.jpg"
     },
     {
       title: "Cultural Night Extravaganza",
@@ -86,7 +84,6 @@ async function main() {
       date: new Date("2026-02-25T18:00:00.000Z"),
       location: "Open Air Theatre",
       clubId: culturalClub.id,
-      posterUrl: "/posters/cultural-night.jpg"
     },
     {
       title: "Inter-College Sports Meet",
@@ -94,7 +91,6 @@ async function main() {
       date: new Date("2026-03-01T08:00:00.000Z"),
       location: "Sports Complex",
       clubId: sportsClub.id,
-      posterUrl: "/posters/sports-meet.jpg"
     },
     {
       title: "Innovation Workshop",
@@ -102,7 +98,6 @@ async function main() {
       date: new Date("2026-03-05T10:00:00.000Z"),
       location: "Innovation Lab, REC",
       clubId: ecell.id,
-      posterUrl: "/posters/innovation-workshop.jpg"
     },
     {
       title: "Web Development Bootcamp",
@@ -110,7 +105,6 @@ async function main() {
       date: new Date("2026-03-10T09:00:00.000Z"),
       location: "Tech Lab 1, Block B",
       clubId: techClub.id,
-      posterUrl: "/posters/web-bootcamp.jpg"
     },
     {
       title: "Art Exhibition & Workshop",
@@ -118,7 +112,6 @@ async function main() {
       date: new Date("2026-03-15T15:00:00.000Z"),
       location: "Art Gallery, Main Building",
       clubId: culturalClub.id,
-      posterUrl: "/posters/art-exhibition.jpg"
     },
     {
       title: "Marathon for Health",
@@ -126,7 +119,6 @@ async function main() {
       date: new Date("2026-03-20T06:00:00.000Z"),
       location: "Campus Grounds",
       clubId: sportsClub.id,
-      posterUrl: "/posters/marathon.jpg"
     }
   ];
 

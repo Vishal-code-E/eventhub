@@ -249,7 +249,7 @@ export default function EventsCarousel({ events, className }: EventsCarouselProp
           </h2>
           
           <p className="text-base md:text-lg text-gray-400 max-w-2xl mx-auto px-4">
-            Swipe through the most exciting events happening on campus. Don't miss out on amazing experiences!
+            Swipe through the most exciting events happening on campus. Don&apos;t miss out on amazing experiences!
           </p>
         </motion.div>
 
