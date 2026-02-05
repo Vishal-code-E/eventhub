@@ -1,0 +1,63 @@
+/* Events Carousel Responsive Styles */
+
+/* Mobile First - Single item view on mobile */
+@media (max-width: 768px) {
+  .events-carousel-container .carousel-item {
+    width: 100% !important;
+  }
+  
+  .events-carousel-container .carousel-wrapper {
+    gap: 1rem;
+  }
+}
+
+/* Tablet - Two items */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .events-carousel-container .carousel-item {
+    width: calc(50% - 0.75rem) !important;
+  }
+}
+
+/* Desktop - Three items */
+@media (min-width: 1024px) {
+  .events-carousel-container .carousel-item {
+    width: calc(33.333% - 1rem) !important;
+  }
+}
+
+/* Smooth scroll behavior */
+.carousel-wrapper {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for horizontal scroll on mobile */
+.carousel-wrapper::-webkit-scrollbar {
+  height: 4px;
+}
+
+.carousel-wrapper::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+.carousel-wrapper::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right, #9333ea, #3b82f6);
+  border-radius: 2px;
+}
+
+.carousel-wrapper::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to right, #7c3aed, #2563eb);
+}
+
+/* Touch scroll for better mobile experience */
+@media (max-width: 768px) {
+  .carousel-wrapper {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .carousel-item {
+    scroll-snap-align: start;
+  }
+}
