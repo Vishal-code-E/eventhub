@@ -13,7 +13,7 @@ export default function Hero() {
         
         {/* Glowing divider line */}
         <div className="w-full max-w-4xl mx-auto mb-8">
-          <div className="h-px bg-gradient-to-r from-transparent via-white to-transparent opacity-50 shadow-[0_0_20px_rgba(255,255,255,0.5)]"></div>
+          <div className="h-px bg-linear-to-r from-transparent via-white to-transparent opacity-50 shadow-[0_0_20px_rgba(255,255,255,0.5)]"></div>
         </div>
         
         {/* Sparkles effect below divider */}
