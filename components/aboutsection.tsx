@@ -7,7 +7,7 @@ import { useReducedMotion, useIsMobile } from "@/lib/motion";
 const TiltedCard = dynamic(() => import("./TiltedCard"), {
   ssr: false,
   loading: () => (
-    <div className="w-full h-[350px] bg-linear-to-br from-gray-900 to-gray-800 rounded-xl animate-pulse" />
+    <div className="w-full h-87.5 bg-linear-to-br from-gray-900 to-gray-800 rounded-xl animate-pulse" />
   ),
 });
 
