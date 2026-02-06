@@ -8,7 +8,7 @@ export default function Hero() {
       
       <section className="relative z-10 text-white text-center px-6 py-16">
         <h1 className="font-aalto text-5xl md:text-7xl lg:text-8xl font-bold mb-8 tracking-wider text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.5)]">
-          EVENTHUB REC
+          EVENT HUB REC
         </h1>
         
         {/* Glowing divider line */}
