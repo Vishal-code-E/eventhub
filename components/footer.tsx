@@ -18,9 +18,9 @@ export function Footer() {
             className="rounded" // optional (remove if logo shouldn’t be rounded)
           />
 
-          <h2 className="text-2xl font-semibold">Stay Connected</h2>
+          <h2 className="text-2xl font-semibold">Stay Updated</h2>
           <p className="text-gray-400 mb-6">
-            Follow EventHub for updates, recaps, and news.
+            Follow EVENT HUB for latest updates, event recaps, and campus news.
           </p>
         </div>
 
