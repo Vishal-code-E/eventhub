@@ -21,7 +21,7 @@ export default function AboutSection() {
   const scaleAmount = prefersReducedMotion || isMobile ? 1 : 1.15;
 
   return (
-    <section className="bg-black text-white py-16 px-6">
+    <section className="bg-black text-white py-20 px-6">
       <div className="max-w-6xl mx-auto text-center">
         {/* Clubs Section */}
         <h2 className="text-4xl font-bold mb-4">
