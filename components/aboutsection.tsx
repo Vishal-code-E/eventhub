@@ -25,7 +25,7 @@ export default function AboutSection() {
       <div className="max-w-6xl mx-auto text-center">
         {/* Clubs Section */}
         <h2 className="text-4xl font-bold mb-4">
-          Explore Clubs at REC
+          Discover Amazing Clubs at REC
         </h2>
         <p className="text-gray-300 mb-12">
           REC is more than classrooms — it’s where passion meets action.
