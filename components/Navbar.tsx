@@ -40,7 +40,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <span className="text-white font-bold text-xl tracking-wide">EVENT HUB</span>
+            <span className="text-white font-bold text-xl tracking-wider">EVENT HUB</span>
           </Link>
 
           {/* Desktop Navigation */}
