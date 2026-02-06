@@ -23,7 +23,7 @@ export default function Hero() {
             background="transparent"
             minSize={0.4}
             maxSize={1.4}
-            particleDensity={200}
+            particleDensity={300}
             className="w-full h-full"
             particleColor="#FFFFFF"
             speed={0.5}
